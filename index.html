@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LoveLive! 今日推薦歌曲</title>
+<!-- Noto Serif TC：網站直接載入明體／宋體字型 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 * {
     box-sizing: border-box;
@@ -25,15 +29,7 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-    /* 明體優先 */
-    font-family:
-        "Noto Serif TC",
-        "Source Han Serif TC",
-        "PMingLiU",
-        "MingLiU",
-        "Songti TC",
-        "Songti SC",
-        serif;
+    font-family: "Noto Serif TC", serif;
     color: var(--text);
     background:
         radial-gradient(
@@ -177,13 +173,7 @@ body {
     background: rgba(255,255,255,.9);
 }
 .logo-text {
-    font-family:
-        "Noto Serif TC",
-        "Source Han Serif TC",
-        "PMingLiU",
-        "MingLiU",
-        "Songti TC",
-        serif;
+    font-family: "Noto Serif TC", serif;
     font-size: 13px;
     line-height: 1.2;
     letter-spacing: 1px;
@@ -218,26 +208,25 @@ body {
     font-size: 10px;
     letter-spacing: 4px;
     font-weight: 700;
-    /* 不再使用藍色 */
     color: var(--text);
     margin-bottom: 15px;
 }
 .hero h1 {
     margin: 0;
-    font-size:
-        clamp(34px, 8vw, 62px);
+    font-family: "Noto Serif TC", serif;
+    font-size: clamp(34px, 8vw, 62px);
     line-height: 1.25;
     letter-spacing: 1px;
     font-weight: 700;
 }
 .hero h1 .highlight {
-    /* 不再使用主題色文字 */
     color: var(--text);
 }
 .hero-description {
     max-width: 520px;
     margin: 18px auto 0;
     color: var(--muted);
+    font-family: "Noto Serif TC", serif;
     font-size: 14px;
     line-height: 2;
     letter-spacing: .5px;
@@ -306,21 +295,22 @@ body {
     font-family: sans-serif;
     font-size: 9px;
     letter-spacing: 3px;
-    /* 不再使用藍色 */
     color: var(--text);
     font-weight: 800;
     margin-bottom: 10px;
 }
 .question {
     margin: 0;
-    font-size:
-        clamp(25px, 5vw, 38px);
+    font-family: "Noto Serif TC", serif;
+    font-size: clamp(25px, 5vw, 38px);
     font-weight: 700;
     letter-spacing: 1px;
+    color: var(--text);
 }
 .question-description {
     margin-top: 10px;
     color: var(--muted);
+    font-family: "Noto Serif TC", serif;
     font-size: 13px;
 }
 /* =========================================================
@@ -328,13 +318,11 @@ body {
 ========================================================= */
 .choices {
     display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 17px;
 }
 .choices.four {
-    grid-template-columns:
-        repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 /* =========================================================
    Choice Card
@@ -358,18 +346,25 @@ body {
         0 12px 35px
         rgba(50,40,60,.07);
     cursor: pointer;
-    font-family:
-        "Noto Serif TC",
-        "Source Han Serif TC",
-        "PMingLiU",
-        "MingLiU",
-        "Songti TC",
-        serif;
+    font-family: "Noto Serif TC", serif;
     text-align: center;
     transition:
         transform .25s ease,
         box-shadow .25s ease,
         border .25s ease;
+    /* 強制文字不要被按鈕預設樣式改色 */
+    color: var(--text) !important;
+}
+/*
+   徹底移除舊版兩點一線圖示。
+   即使舊 CSS 或 HTML 殘留，也不顯示。
+*/
+.choice-icon,
+.choice-icon::before,
+.choice-icon::after {
+    display: none !important;
+    visibility: hidden !important;
+    content: none !important;
 }
 .choice::before {
     content: "";
@@ -402,19 +397,21 @@ body {
 }
 /* =========================================================
    選項文字
-   已完全移除原本的兩點一線圖示
 ========================================================= */
 .choice-title {
     position: relative;
+    font-family: "Noto Serif TC", serif !important;
     font-size: 19px;
     font-weight: 700;
     margin-bottom: 7px;
     letter-spacing: 1px;
-    color: var(--text);
+    /* 永遠固定深灰，不跟著團體顏色變 */
+    color: #303038 !important;
 }
 .choice-subtitle {
     position: relative;
-    color: var(--muted);
+    font-family: "Noto Serif TC", serif !important;
+    color: #888892 !important;
     font-size: 12px;
     letter-spacing: 1px;
 }
@@ -426,6 +423,7 @@ body {
     max-width: 500px;
     text-align: center;
     color: var(--muted);
+    font-family: "Noto Serif TC", serif;
     font-size: 13px;
     line-height: 1.8;
 }
@@ -441,7 +439,6 @@ body {
     padding: 8px 14px;
     border-radius: 999px;
     background: var(--main-light);
-    /* 不再使用藍色 */
     color: var(--text);
     font-family: sans-serif;
     font-size: 9px;
@@ -450,14 +447,16 @@ body {
 }
 .result-title {
     margin: 18px 0 8px;
-    font-size:
-        clamp(28px, 6vw, 44px);
+    font-family: "Noto Serif TC", serif;
+    font-size: clamp(28px, 6vw, 44px);
     font-weight: 700;
     letter-spacing: 1px;
+    color: var(--text);
 }
 .result-subtitle {
     margin: 0 0 28px;
     color: var(--muted);
+    font-family: "Noto Serif TC", serif;
     font-size: 14px;
 }
 /* =========================================================
@@ -494,8 +493,7 @@ body {
 ========================================================= */
 .album-wrapper {
     position: relative;
-    width:
-        min(65vw, 360px);
+    width: min(65vw, 360px);
     aspect-ratio: 1;
     margin: 5px auto 30px;
     border-radius: 24px;
@@ -542,7 +540,6 @@ body {
    Result Information
 ========================================================= */
 .result-category {
-    /* 不再使用藍色 */
     color: var(--text);
     font-family: sans-serif;
     font-size: 10px;
@@ -553,18 +550,19 @@ body {
 .song-name {
     margin: 0 auto 10px;
     max-width: 650px;
-    font-size:
-        clamp(26px, 6vw, 42px);
+    font-family: "Noto Serif TC", serif;
+    font-size: clamp(26px, 6vw, 42px);
     font-weight: 700;
     line-height: 1.35;
+    color: var(--text);
 }
 .group-name {
     display: inline-block;
     padding: 7px 15px;
     border-radius: 999px;
-    /* 不再使用藍色 */
-    color: var(--text);
+    color: var(--text) !important;
     background: var(--main-light);
+    font-family: "Noto Serif TC", serif;
     font-size: 13px;
     font-weight: 700;
 }
@@ -572,6 +570,7 @@ body {
     max-width: 500px;
     margin: 20px auto 28px;
     color: var(--muted);
+    font-family: "Noto Serif TC", serif;
     font-size: 13px;
     line-height: 1.9;
 }
@@ -589,13 +588,7 @@ body {
     border: none;
     border-radius: 999px;
     padding: 14px 22px;
-    font-family:
-        "Noto Serif TC",
-        "Source Han Serif TC",
-        "PMingLiU",
-        "MingLiU",
-        "Songti TC",
-        serif;
+    font-family: "Noto Serif TC", serif;
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
@@ -708,10 +701,10 @@ body {
 <div class="background-decoration">
     <div class="glow one"></div>
     <div class="glow two"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
 </div>
 <div class="page">
 <div class="container">
@@ -719,56 +712,56 @@ body {
      TOP
 ========================================================= -->
 <div class="topbar">
-<div class="logo">
-    <div class="logo-mark"></div>
-    <div class="logo-text">
-        LOVE LIVE!
-        <span>RANDOM SONG</span>
+    <div class="logo">
+        <div class="logo-mark"></div>
+        <div class="logo-text">
+            LOVE LIVE!
+            <span>RANDOM SONG</span>
+        </div>
     </div>
-</div>
-<div class="top-tag">
-    FAN PROJECT
-</div>
+    <div class="top-tag">
+        FAN PROJECT
+    </div>
 </div>
 <!-- =========================================================
      HERO
 ========================================================= -->
 <div class="hero">
-<div class="hero-kicker">
-    LOVE LIVE! SONG SELECTOR
-</div>
-<h1>
-    今天的你，<br>
-    <span class="highlight">
-        適合哪首歌？
-    </span>
-</h1>
-<div class="hero-description">
-    用兩個小問題，
-    找到今天屬於你的 LoveLive! 歌曲。
-    <br>
-    不需要思考太久，
-    憑直覺選就好了。
-</div>
+    <div class="hero-kicker">
+        LOVE LIVE! SONG SELECTOR
+    </div>
+    <h1>
+        今天的你，<br>
+        <span class="highlight">
+            適合哪首歌？
+        </span>
+    </h1>
+    <div class="hero-description">
+        用兩個小問題，
+        找到今天屬於你的 LoveLive! 歌曲。
+        <br>
+        不需要思考太久，
+        憑直覺選就好了。
+    </div>
 </div>
 <!-- =========================================================
      PROGRESS
 ========================================================= -->
 <div class="progress-wrapper">
-<div class="progress">
-    <div
-        class="progress-dot active"
-        id="dot1">
+    <div class="progress">
+        <div
+            class="progress-dot active"
+            id="dot1">
+        </div>
+        <div
+            class="progress-dot"
+            id="dot2">
+        </div>
+        <div
+            class="progress-dot"
+            id="dot3">
+        </div>
     </div>
-    <div
-        class="progress-dot"
-        id="dot2">
-    </div>
-    <div
-        class="progress-dot"
-        id="dot3">
-    </div>
-</div>
 </div>
 <!-- =========================================================
      SCREEN 1
@@ -777,49 +770,52 @@ body {
     class="screen active"
     id="screen1"
 >
-<div class="question-area">
-    <div class="question-number">
-        QUESTION 01
+    <div class="question-area">
+        <div class="question-number">
+            QUESTION 01
+        </div>
+        <h2 class="question">
+            今天的心情比較像什麼？
+        </h2>
+        <div class="question-description">
+            選一個最接近現在的你。
+        </div>
     </div>
-    <h2 class="question">
-        今天的心情比較像什麼？
-    </h2>
-    <div class="question-description">
-        選一個最接近現在的你。
+    <div class="choices">
+        <button
+            type="button"
+            class="choice"
+            onclick="selectMood('muse')"
+        >
+            <div>
+                <div class="choice-title">
+                    綻放的櫻花
+                </div>
+            </div>
+        </button>
+        <button
+            type="button"
+            class="choice"
+            onclick="selectMood('aqours')"
+        >
+            <div>
+                <div class="choice-title">
+                    洶湧的海浪
+                </div>
+            </div>
+        </button>
+        <button
+            type="button"
+            class="choice"
+            onclick="selectMood('liella')"
+        >
+            <div>
+                <div class="choice-title">
+                    平靜的星辰
+                </div>
+            </div>
+        </button>
     </div>
-</div>
-<div class="choices">
-    <button
-        class="choice"
-        onclick="selectMood('muse')"
-    >
-        <div>
-            <div class="choice-title">
-                綻放的櫻花
-            </div>
-        </div>
-    </button>
-    <button
-        class="choice"
-        onclick="selectMood('aqours')"
-    >
-        <div>
-            <div class="choice-title">
-                洶湧的海浪
-            </div>
-        </div>
-    </button>
-    <button
-        class="choice"
-        onclick="selectMood('liella')"
-    >
-        <div>
-            <div class="choice-title">
-                平靜的星辰
-            </div>
-        </div>
-    </button>
-</div>
 </section>
 <!-- =========================================================
      SCREEN 2
@@ -828,25 +824,25 @@ body {
     class="screen"
     id="screen2"
 >
-<div class="question-area">
-    <div class="question-number">
-        QUESTION 02
+    <div class="question-area">
+        <div class="question-number">
+            QUESTION 02
+        </div>
+        <h2 class="question">
+            喜歡什麼樣的景色？
+        </h2>
+        <div
+            class="question-description"
+            id="groupDescription"
+        >
+            選擇一種屬於你的風景。
+        </div>
     </div>
-    <h2 class="question">
-        喜歡什麼樣的景色？
-    </h2>
     <div
-        class="question-description"
-        id="groupDescription"
+        class="choices four"
+        id="groupChoices"
     >
-        選擇一種屬於你的風景。
     </div>
-</div>
-<div
-    class="choices four"
-    id="groupChoices"
->
-</div>
 </section>
 <!-- =========================================================
      SCREEN 3
@@ -855,70 +851,71 @@ body {
     class="screen result-section"
     id="screen3"
 >
-<div class="result-eyebrow">
-    YOUR LOVE LIVE! SONG
-</div>
-<h2 class="result-title">
-    今天的命定歌曲
-</h2>
-<p class="result-subtitle">
-    這首歌，現在正好適合你。
-</p>
-<div class="result-card">
-    <div class="album-wrapper">
-        <img
-            id="albumCover"
-            src=""
-            alt="歌曲封面"
-        >
+    <div class="result-eyebrow">
+        YOUR LOVE LIVE! SONG
     </div>
-    <div
-        class="result-category"
-        id="resultCategory"
-    >
-        RECOMMENDED FOR YOU
-    </div>
-    <h3
-        class="song-name"
-        id="songName"
-    >
-        歌曲名稱
-    </h3>
-    <div
-        class="group-name"
-        id="groupName"
-    >
-        團體名稱
-    </div>
-    <p class="result-message">
-        今天的你，也許正適合這首歌。<br>
-        不妨戴上耳機，
-        讓 LoveLive! 陪你走一段吧。
+    <h2 class="result-title">
+        今天的命定歌曲
+    </h2>
+    <p class="result-subtitle">
+        這首歌，現在正好適合你。
     </p>
-    <!-- 只保留兩個按鈕 -->
-    <div class="buttons">
-        <button
-            class="btn btn-secondary"
-            onclick="restart()"
+    <div class="result-card">
+        <div class="album-wrapper">
+            <img
+                id="albumCover"
+                src=""
+                alt="歌曲封面"
+            >
+        </div>
+        <div
+            class="result-category"
+            id="resultCategory"
         >
-            重新開始
-        </button>
-        <button
-            class="btn btn-primary"
-            onclick="listenSong()"
+            RECOMMENDED FOR YOU
+        </div>
+        <h3
+            class="song-name"
+            id="songName"
         >
-            跳轉聽歌
-        </button>
+            歌曲名稱
+        </h3>
+        <div
+            class="group-name"
+            id="groupName"
+        >
+            團體名稱
+        </div>
+        <p class="result-message">
+            今天的你，也許正適合這首歌。<br>
+            不妨戴上耳機，
+            讓 LoveLive! 陪你走一段吧。
+        </p>
+        <div class="buttons">
+            <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="restart()"
+            >
+                重新開始
+            </button>
+            <button
+                type="button"
+                class="btn btn-primary"
+                onclick="listenSong()"
+            >
+                跳轉聽歌
+            </button>
+        </div>
     </div>
-</div>
 </section>
 <!-- =========================================================
      FOOTER
 ========================================================= -->
 <div class="footer">
-LoveLive! Song Selector
-<br>
-非官方粉絲企劃網站・Fan Project
+    LoveLive! Song Selector
+    <br>
+    非官方粉絲企劃網站・Fan Project
 </div>
 </div>
 </div>
@@ -954,26 +951,20 @@ const songData = {
                 {
                     name: "微熱からMystery",
                     group: "lily white",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+微熱からMystery"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+微熱からMystery"
                 },
                 {
                     name: "知らないLove*教えてLove",
                     group: "lily white",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+知らないLove+教えてLove"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+知らないLove+教えてLove"
                 },
                 {
                     name: "秋のあなたの空遠く",
                     group: "lily white",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+秋のあなたの空遠く"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+秋のあなたの空遠く"
                 }
             ]
         },
@@ -983,18 +974,14 @@ const songData = {
                 {
                     name: "Cutie Panther",
                     group: "BiBi",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=BiBi",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+Cutie+Panther"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=BiBi",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+Cutie+Panther"
                 },
                 {
                     name: "PSYCHIC FIRE",
                     group: "BiBi",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=BiBi",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+PSYCHIC+FIRE"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=BiBi",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+PSYCHIC+FIRE"
                 }
             ]
         },
@@ -1004,18 +991,14 @@ const songData = {
                 {
                     name: "Love marginal",
                     group: "Printemps",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=Printemps",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+Love+marginal"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=Printemps",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+Love+marginal"
                 },
                 {
                     name: "sweet&sweet holiday",
                     group: "Printemps",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=Printemps",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+sweet+sweet+holiday"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=Printemps",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+sweet+sweet+holiday"
                 }
             ]
         },
@@ -1025,18 +1008,14 @@ const songData = {
                 {
                     name: "Snow halation",
                     group: "μ's",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=μ's",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+Snow+halation"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=μ's",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+Snow+halation"
                 },
                 {
                     name: "僕らは今のなかで",
                     group: "μ's",
-                    cover:
-                        "https://placehold.co/800x800/f7dce5/333?text=μ's",
-                    url:
-                        "https://www.youtube.com/results?search_query=LoveLive+僕らは今のなかで"
+                    cover: "https://placehold.co/800x800/f7dce5/333?text=μ's",
+                    url: "https://www.youtube.com/results?search_query=LoveLive+僕らは今のなかで"
                 }
             ]
         }
@@ -1048,18 +1027,14 @@ const songData = {
                 {
                     name: "元気全開DAY! DAY! DAY!",
                     group: "CYaRon!",
-                    cover:
-                        "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Aqours+元気全開DAY+DAY+DAY"
+                    cover: "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
+                    url: "https://www.youtube.com/results?search_query=Aqours+元気全開DAY+DAY+DAY"
                 },
                 {
                     name: "近未来ハッピーエンド",
                     group: "CYaRon!",
-                    cover:
-                        "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Aqours+近未来ハッピーエンド"
+                    cover: "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
+                    url: "https://www.youtube.com/results?search_query=Aqours+近未来ハッピーエンド"
                 }
             ]
         },
@@ -1069,18 +1044,14 @@ const songData = {
                 {
                     name: "トリコリコPLEASE!!",
                     group: "AZALEA",
-                    cover:
-                        "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
-                    url:
-                        "https://www.youtube.com/results?search_query=Aqours+トリコリコPLEASE"
+                    cover: "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
+                    url: "https://www.youtube.com/results?search_query=Aqours+トリコリコPLEASE"
                 },
                 {
                     name: "GALAXY HidE and SeeK",
                     group: "AZALEA",
-                    cover:
-                        "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
-                    url:
-                        "https://www.youtube.com/results?search_query=Aqours+GALAXY+HidE+and+SeeK"
+                    cover: "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
+                    url: "https://www.youtube.com/results?search_query=Aqours+GALAXY+HidE+and+SeeK"
                 }
             ]
         },
@@ -1090,18 +1061,14 @@ const songData = {
                 {
                     name: "Strawberry Trapper",
                     group: "Guilty Kiss",
-                    cover:
-                        "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
-                    url:
-                        "https://www.youtube.com/results?search_query=Aqours+Strawberry+Trapper"
+                    cover: "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
+                    url: "https://www.youtube.com/results?search_query=Aqours+Strawberry+Trapper"
                 },
                 {
                     name: "Guilty Eyes Fever",
                     group: "Guilty Kiss",
-                    cover:
-                        "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
-                    url:
-                        "https://www.youtube.com/results?search_query=Aqours+Guilty+Eyes+Fever"
+                    cover: "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
+                    url: "https://www.youtube.com/results?search_query=Aqours+Guilty+Eyes+Fever"
                 }
             ]
         },
@@ -1111,18 +1078,14 @@ const songData = {
                 {
                     name: "君のこころは輝いてるかい？",
                     group: "Aqours",
-                    cover:
-                        "https://placehold.co/800x800/dff2ff/333?text=Aqours",
-                    url:
-                        "https://www.youtube.com/results?search_query=Aqours+君のこころは輝いてるかい"
+                    cover: "https://placehold.co/800x800/dff2ff/333?text=Aqours",
+                    url: "https://www.youtube.com/results?search_query=Aqours+君のこころは輝いてるかい"
                 },
                 {
                     name: "青空Jumping Heart",
                     group: "Aqours",
-                    cover:
-                        "https://placehold.co/800x800/dff2ff/333?text=Aqours",
-                    url:
-                        "https://www.youtube.com/results?search_query=Aqours+青空Jumping+Heart"
+                    cover: "https://placehold.co/800x800/dff2ff/333?text=Aqours",
+                    url: "https://www.youtube.com/results?search_query=Aqours+青空Jumping+Heart"
                 }
             ]
         }
@@ -1134,18 +1097,14 @@ const songData = {
                 {
                     name: "オルタネイト",
                     group: "5yncri5e!",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+5yncri5e"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
+                    url: "https://www.youtube.com/results?search_query=Liella+5yncri5e"
                 },
                 {
                     name: "Thank you Good morning",
                     group: "5yncri5e!",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+5yncri5e"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
+                    url: "https://www.youtube.com/results?search_query=Liella+5yncri5e"
                 }
             ]
         },
@@ -1155,18 +1114,14 @@ const songData = {
                 {
                     name: "What a Wonderful Dream!!",
                     group: "CatChu!",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+CatChu"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
+                    url: "https://www.youtube.com/results?search_query=Liella+CatChu"
                 },
                 {
                     name: "オルタネイト",
                     group: "CatChu!",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+CatChu"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
+                    url: "https://www.youtube.com/results?search_query=Liella+CatChu"
                 }
             ]
         },
@@ -1176,18 +1131,14 @@ const songData = {
                 {
                     name: "不可視なブルー",
                     group: "KALEIDOSCORE",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
+                    url: "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
                 },
                 {
                     name: "ニュートラル",
                     group: "KALEIDOSCORE",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
+                    url: "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
                 }
             ]
         },
@@ -1197,26 +1148,20 @@ const songData = {
                 {
                     name: "始まりは君の空",
                     group: "Liella!",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+始まりは君の空"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+                    url: "https://www.youtube.com/results?search_query=Liella+始まりは君の空"
                 },
                 {
                     name: "未来予報ハレルヤ！",
                     group: "Liella!",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+未来予報ハレルヤ"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+                    url: "https://www.youtube.com/results?search_query=Liella+未来予報ハレルヤ"
                 },
                 {
                     name: "ノンフィクション!!",
                     group: "Liella!",
-                    cover:
-                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
-                    url:
-                        "https://www.youtube.com/results?search_query=Liella+ノンフィクション"
+                    cover: "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+                    url: "https://www.youtube.com/results?search_query=Liella+ノンフィクション"
                 }
             ]
         }
@@ -1349,9 +1294,13 @@ function renderGroupChoices(mood) {
                 document.createElement(
                     "button"
                 );
+            button.type = "button";
             button.className =
                 "choice";
-            /* 不再放任何圖示 */
+            /*
+               這裡刻意不加入任何 icon。
+               第二題只顯示文字。
+            */
             button.innerHTML = `
                 <div>
                     <div class="choice-title">
@@ -1394,9 +1343,7 @@ function randomSong(songs) {
 ========================================================= */
 function showResult() {
     const category =
-        songData
-        [selectedMood]
-        [selectedGroup];
+        songData[selectedMood][selectedGroup];
     if (
         !category ||
         !category.songs ||
