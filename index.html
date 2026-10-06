@@ -25,12 +25,14 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-    /* 優雅明體風格 */
+    /* 明體優先 */
     font-family:
         "Noto Serif TC",
         "Source Han Serif TC",
-        "PingFang TC",
-        "Microsoft JhengHei",
+        "PMingLiU",
+        "MingLiU",
+        "Songti TC",
+        "Songti SC",
         serif;
     color: var(--text);
     background:
@@ -50,8 +52,7 @@ body {
             var(--bg2)
         );
     overflow-x: hidden;
-    transition:
-        background .8s ease;
+    transition: background .8s ease;
 }
 /* =========================================================
    背景裝飾
@@ -179,7 +180,9 @@ body {
     font-family:
         "Noto Serif TC",
         "Source Han Serif TC",
-        "PingFang TC",
+        "PMingLiU",
+        "MingLiU",
+        "Songti TC",
         serif;
     font-size: 13px;
     line-height: 1.2;
@@ -199,11 +202,9 @@ body {
     font-family: sans-serif;
     font-size: 10px;
     letter-spacing: 1px;
-    color: var(--main);
+    color: var(--text);
     background: var(--main-light);
-    transition:
-        background .5s ease,
-        color .5s ease;
+    transition: background .5s ease;
 }
 /* =========================================================
    Hero
@@ -217,9 +218,9 @@ body {
     font-size: 10px;
     letter-spacing: 4px;
     font-weight: 700;
-    color: var(--main);
+    /* 不再使用藍色 */
+    color: var(--text);
     margin-bottom: 15px;
-    transition: color .5s ease;
 }
 .hero h1 {
     margin: 0;
@@ -230,8 +231,8 @@ body {
     font-weight: 700;
 }
 .hero h1 .highlight {
-    color: var(--main);
-    transition: color .5s ease;
+    /* 不再使用主題色文字 */
+    color: var(--text);
 }
 .hero-description {
     max-width: 520px;
@@ -283,11 +284,15 @@ body {
 @keyframes screenIn {
     from {
         opacity: 0;
-        transform: translateY(20px) scale(.98);
+        transform:
+            translateY(20px)
+            scale(.98);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 /* =========================================================
@@ -301,10 +306,10 @@ body {
     font-family: sans-serif;
     font-size: 9px;
     letter-spacing: 3px;
-    color: var(--main);
+    /* 不再使用藍色 */
+    color: var(--text);
     font-weight: 800;
     margin-bottom: 10px;
-    transition: color .5s ease;
 }
 .question {
     margin: 0;
@@ -323,11 +328,13 @@ body {
 ========================================================= */
 .choices {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
     gap: 17px;
 }
 .choices.four {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        repeat(2, 1fr);
 }
 /* =========================================================
    Choice Card
@@ -354,7 +361,9 @@ body {
     font-family:
         "Noto Serif TC",
         "Source Han Serif TC",
-        "PingFang TC",
+        "PMingLiU",
+        "MingLiU",
+        "Songti TC",
         serif;
     text-align: center;
     transition:
@@ -391,43 +400,17 @@ body {
 .choice:active {
     transform: scale(.97);
 }
-/* 不再使用 Emoji */
-.choice-icon {
-    position: relative;
-    width: 42px;
-    height: 2px;
-    margin: 0 auto 28px;
-    background: var(--main);
-    opacity: .75;
-    transition:
-        background .5s ease,
-        transform .3s ease;
-}
-.choice-icon::before,
-.choice-icon::after {
-    content: "";
-    position: absolute;
-    top: -3px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--main);
-}
-.choice-icon::before {
-    left: 0;
-}
-.choice-icon::after {
-    right: 0;
-}
-.choice:hover .choice-icon {
-    transform: scaleX(1.2);
-}
+/* =========================================================
+   選項文字
+   已完全移除原本的兩點一線圖示
+========================================================= */
 .choice-title {
     position: relative;
     font-size: 19px;
     font-weight: 700;
     margin-bottom: 7px;
     letter-spacing: 1px;
+    color: var(--text);
 }
 .choice-subtitle {
     position: relative;
@@ -458,14 +441,12 @@ body {
     padding: 8px 14px;
     border-radius: 999px;
     background: var(--main-light);
-    color: var(--main);
+    /* 不再使用藍色 */
+    color: var(--text);
     font-family: sans-serif;
     font-size: 9px;
     font-weight: 800;
     letter-spacing: 2px;
-    transition:
-        background .5s ease,
-        color .5s ease;
 }
 .result-title {
     margin: 18px 0 8px;
@@ -561,13 +542,13 @@ body {
    Result Information
 ========================================================= */
 .result-category {
-    color: var(--main);
+    /* 不再使用藍色 */
+    color: var(--text);
     font-family: sans-serif;
     font-size: 10px;
     letter-spacing: 3px;
     font-weight: 800;
     margin-bottom: 9px;
-    transition: color .5s ease;
 }
 .song-name {
     margin: 0 auto 10px;
@@ -581,13 +562,11 @@ body {
     display: inline-block;
     padding: 7px 15px;
     border-radius: 999px;
-    color: var(--main);
+    /* 不再使用藍色 */
+    color: var(--text);
     background: var(--main-light);
     font-size: 13px;
     font-weight: 700;
-    transition:
-        color .5s ease,
-        background .5s ease;
 }
 .result-message {
     max-width: 500px;
@@ -613,7 +592,9 @@ body {
     font-family:
         "Noto Serif TC",
         "Source Han Serif TC",
-        "PingFang TC",
+        "PMingLiU",
+        "MingLiU",
+        "Songti TC",
         serif;
     font-size: 13px;
     font-weight: 700;
@@ -697,12 +678,6 @@ body {
         padding: 18px;
         border-radius: 22px;
     }
-    .choice-icon {
-        width: 42px;
-        flex-shrink: 0;
-        margin: 0 18px 0 0;
-        text-align: center;
-    }
     .choice-title {
         font-size: 17px;
     }
@@ -733,10 +708,10 @@ body {
 <div class="background-decoration">
     <div class="glow one"></div>
     <div class="glow two"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
 </div>
 <div class="page">
 <div class="container">
@@ -744,56 +719,56 @@ body {
      TOP
 ========================================================= -->
 <div class="topbar">
-    <div class="logo">
-        <div class="logo-mark"></div>
-        <div class="logo-text">
-            LOVE LIVE!
-            <span>RANDOM SONG</span>
-        </div>
+<div class="logo">
+    <div class="logo-mark"></div>
+    <div class="logo-text">
+        LOVE LIVE!
+        <span>RANDOM SONG</span>
     </div>
-    <div class="top-tag">
-        FAN PROJECT
-    </div>
+</div>
+<div class="top-tag">
+    FAN PROJECT
+</div>
 </div>
 <!-- =========================================================
      HERO
 ========================================================= -->
 <div class="hero">
-    <div class="hero-kicker">
-        LOVE LIVE! SONG SELECTOR
-    </div>
-    <h1>
-        今天的你，<br>
-        <span class="highlight">
-            適合哪首歌？
-        </span>
-    </h1>
-    <div class="hero-description">
-        用兩個小問題，
-        找到今天屬於你的 LoveLive! 歌曲。
-        <br>
-        不需要思考太久，
-        憑直覺選就好了。
-    </div>
+<div class="hero-kicker">
+    LOVE LIVE! SONG SELECTOR
+</div>
+<h1>
+    今天的你，<br>
+    <span class="highlight">
+        適合哪首歌？
+    </span>
+</h1>
+<div class="hero-description">
+    用兩個小問題，
+    找到今天屬於你的 LoveLive! 歌曲。
+    <br>
+    不需要思考太久，
+    憑直覺選就好了。
+</div>
 </div>
 <!-- =========================================================
      PROGRESS
 ========================================================= -->
 <div class="progress-wrapper">
-    <div class="progress">
-        <div
-            class="progress-dot active"
-            id="dot1">
-        </div>
-        <div
-            class="progress-dot"
-            id="dot2">
-        </div>
-        <div
-            class="progress-dot"
-            id="dot3">
-        </div>
+<div class="progress">
+    <div
+        class="progress-dot active"
+        id="dot1">
     </div>
+    <div
+        class="progress-dot"
+        id="dot2">
+    </div>
+    <div
+        class="progress-dot"
+        id="dot3">
+    </div>
+</div>
 </div>
 <!-- =========================================================
      SCREEN 1
@@ -802,52 +777,49 @@ body {
     class="screen active"
     id="screen1"
 >
-    <div class="question-area">
-        <div class="question-number">
-            QUESTION 01
-        </div>
-        <h2 class="question">
-            今天的心情比較像什麼？
-        </h2>
-        <div class="question-description">
-            選一個最接近現在的你。
-        </div>
+<div class="question-area">
+    <div class="question-number">
+        QUESTION 01
     </div>
-    <div class="choices">
-        <button
-            class="choice"
-            onclick="selectMood('muse')"
-        >
-            <div class="choice-icon"></div>
-            <div>
-                <div class="choice-title">
-                    綻放的櫻花
-                </div>
-            </div>
-        </button>
-        <button
-            class="choice"
-            onclick="selectMood('aqours')"
-        >
-            <div class="choice-icon"></div>
-            <div>
-                <div class="choice-title">
-                    洶湧的海浪
-                </div>
-            </div>
-        </button>
-        <button
-            class="choice"
-            onclick="selectMood('liella')"
-        >
-            <div class="choice-icon"></div>
-            <div>
-                <div class="choice-title">
-                    平靜的星辰
-                </div>
-            </div>
-        </button>
+    <h2 class="question">
+        今天的心情比較像什麼？
+    </h2>
+    <div class="question-description">
+        選一個最接近現在的你。
     </div>
+</div>
+<div class="choices">
+    <button
+        class="choice"
+        onclick="selectMood('muse')"
+    >
+        <div>
+            <div class="choice-title">
+                綻放的櫻花
+            </div>
+        </div>
+    </button>
+    <button
+        class="choice"
+        onclick="selectMood('aqours')"
+    >
+        <div>
+            <div class="choice-title">
+                洶湧的海浪
+            </div>
+        </div>
+    </button>
+    <button
+        class="choice"
+        onclick="selectMood('liella')"
+    >
+        <div>
+            <div class="choice-title">
+                平靜的星辰
+            </div>
+        </div>
+    </button>
+</div>
 </section>
 <!-- =========================================================
      SCREEN 2
@@ -856,25 +828,25 @@ body {
     class="screen"
     id="screen2"
 >
-    <div class="question-area">
-        <div class="question-number">
-            QUESTION 02
-        </div>
-        <h2 class="question">
-            喜歡什麼樣的景色？
-        </h2>
-        <div
-            class="question-description"
-            id="groupDescription"
-        >
-            選擇一種屬於你的風景。
-        </div>
+<div class="question-area">
+    <div class="question-number">
+        QUESTION 02
     </div>
+    <h2 class="question">
+        喜歡什麼樣的景色？
+    </h2>
     <div
-        class="choices four"
-        id="groupChoices"
+        class="question-description"
+        id="groupDescription"
     >
+        選擇一種屬於你的風景。
     </div>
+</div>
+<div
+    class="choices four"
+    id="groupChoices"
+>
+</div>
 </section>
 <!-- =========================================================
      SCREEN 3
@@ -883,75 +855,70 @@ body {
     class="screen result-section"
     id="screen3"
 >
-    <div class="result-eyebrow">
-        YOUR LOVE LIVE! SONG
+<div class="result-eyebrow">
+    YOUR LOVE LIVE! SONG
+</div>
+<h2 class="result-title">
+    今天的命定歌曲
+</h2>
+<p class="result-subtitle">
+    這首歌，現在正好適合你。
+</p>
+<div class="result-card">
+    <div class="album-wrapper">
+        <img
+            id="albumCover"
+            src=""
+            alt="歌曲封面"
+        >
     </div>
-    <h2 class="result-title">
-        今天的命定歌曲
-    </h2>
-    <p class="result-subtitle">
-        這首歌，現在正好適合你。
+    <div
+        class="result-category"
+        id="resultCategory"
+    >
+        RECOMMENDED FOR YOU
+    </div>
+    <h3
+        class="song-name"
+        id="songName"
+    >
+        歌曲名稱
+    </h3>
+    <div
+        class="group-name"
+        id="groupName"
+    >
+        團體名稱
+    </div>
+    <p class="result-message">
+        今天的你，也許正適合這首歌。<br>
+        不妨戴上耳機，
+        讓 LoveLive! 陪你走一段吧。
     </p>
-    <div class="result-card">
-        <div class="album-wrapper">
-            <img
-                id="albumCover"
-                src=""
-                alt="歌曲封面"
-            >
-        </div>
-        <div
-            class="result-category"
-            id="resultCategory"
+    <!-- 只保留兩個按鈕 -->
+    <div class="buttons">
+        <button
+            class="btn btn-secondary"
+            onclick="restart()"
         >
-            RECOMMENDED FOR YOU
-        </div>
-        <h3
-            class="song-name"
-            id="songName"
+            重新開始
+        </button>
+        <button
+            class="btn btn-primary"
+            onclick="listenSong()"
         >
-            歌曲名稱
-        </h3>
-        <div
-            class="group-name"
-            id="groupName"
-        >
-            團體名稱
-        </div>
-        <p class="result-message">
-            今天的你，也許正適合這首歌。<br>
-            不妨戴上耳機，
-            讓 LoveLive! 陪你走一段吧。
-        </p>
-        <div class="buttons">
-            <button
-                class="btn btn-primary"
-                onclick="drawAgain()"
-            >
-                再抽一首
-            </button>
-            <button
-                class="btn btn-secondary"
-                onclick="restart()"
-            >
-                重新開始
-            </button>
-            <button
-                class="btn btn-secondary"
-                onclick="listenSong()"
-            >
-                跳轉聽歌
-            </button>
-        </div>
+            跳轉聽歌
+        </button>
     </div>
+</div>
 </section>
 <!-- =========================================================
      FOOTER
 ========================================================= -->
 <div class="footer">
-    LoveLive! Song Selector
-    <br>
-    非官方粉絲企劃網站・Fan Project
+LoveLive! Song Selector
+<br>
+非官方粉絲企劃網站・Fan Project
 </div>
 </div>
 </div>
@@ -978,16 +945,6 @@ const themes = {
 };
 /* =========================================================
    歌曲資料
-=========================================================
-   之後你只需要修改：
-   name  = 歌名
-   group = 團名
-   cover = 封面圖片位置
-   url   = 聽歌網址
-   例如：
-   cover: "images/snow-halation.jpg"
-   url:
-   "https://www.youtube.com/results?search_query=LoveLive+Snow+halation"
 ========================================================= */
 const songData = {
     muse: {
@@ -1267,11 +1224,6 @@ const songData = {
 };
 /* =========================================================
    第二題選項
-=========================================================
-   注意：
-   這裡故意不放團名。
-   使用者只能看到意境名稱，
-   不會知道自己選的是哪一個小隊。
 ========================================================= */
 const groupOptions = {
     muse: [
@@ -1384,12 +1336,10 @@ function renderGroupChoices(mood) {
     if (mood === "muse") {
         description.textContent =
             "如果今天是一片櫻花，你想看見哪一種風景？";
-    }
-    else if (mood === "aqours") {
+    } else if (mood === "aqours") {
         description.textContent =
             "如果今天是一片海，你想遇見哪一種浪？";
-    }
-    else {
+    } else {
         description.textContent =
             "如果今天抬頭看見星空，你想看見哪一片星光？";
     }
@@ -1401,8 +1351,8 @@ function renderGroupChoices(mood) {
                 );
             button.className =
                 "choice";
+            /* 不再放任何圖示 */
             button.innerHTML = `
-                <div class="choice-icon"></div>
                 <div>
                     <div class="choice-title">
                         ${option.title}
@@ -1482,18 +1432,6 @@ function showResult() {
         .textContent =
         category.title;
     showScreen(3);
-}
-/* =========================================================
-   再抽一首
-========================================================= */
-function drawAgain() {
-    if (
-        !selectedMood ||
-        !selectedGroup
-    ) {
-        return;
-    }
-    showResult();
 }
 /* =========================================================
    重新開始
