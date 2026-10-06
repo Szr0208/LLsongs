@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LoveLive! 今日推薦歌曲</title>
 <style>
-/* =========================================================
-   基本設定
-========================================================= */
 * {
     box-sizing: border-box;
 }
@@ -20,8 +17,7 @@
     --white: rgba(255,255,255,.88);
     --bg1: #fff7fa;
     --bg2: #fdfdfd;
-    --shadow:
-        0 20px 60px rgba(80,60,80,.10);
+    --shadow: 0 20px 60px rgba(80,60,80,.10);
 }
 html {
     scroll-behavior: smooth;
@@ -29,11 +25,13 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
+    /* 優雅明體風格 */
     font-family:
-        "Noto Sans TC",
+        "Noto Serif TC",
+        "Source Han Serif TC",
         "PingFang TC",
         "Microsoft JhengHei",
-        sans-serif;
+        serif;
     color: var(--text);
     background:
         radial-gradient(
@@ -53,8 +51,7 @@ body {
         );
     overflow-x: hidden;
     transition:
-        background .8s ease,
-        --main .5s ease;
+        background .8s ease;
 }
 /* =========================================================
    背景裝飾
@@ -88,14 +85,12 @@ body {
 }
 .particle {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background: var(--main);
-    opacity: .25;
-    animation:
-        floating 5s ease-in-out infinite;
-    transition: background .8s ease;
+    opacity: .22;
+    animation: floating 5s ease-in-out infinite;
 }
 .particle:nth-child(3) {
     left: 12%;
@@ -133,10 +128,7 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding:
-        28px
-        18px
-        50px;
+    padding: 28px 18px 50px;
 }
 .container {
     width: 100%;
@@ -156,8 +148,6 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
 }
 .logo-mark {
     width: 34px;
@@ -175,27 +165,40 @@ body {
         );
     box-shadow:
         0 7px 20px
-        color-mix(
-            in srgb,
-            var(--main) 30%,
-            transparent
-        );
+        rgba(80,60,80,.15);
     transition: background .5s ease;
 }
+.logo-mark::after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+}
 .logo-text {
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PingFang TC",
+        serif;
     font-size: 13px;
     line-height: 1.2;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 .logo-text span {
     display: block;
-    font-size: 9px;
+    font-family: sans-serif;
+    font-size: 8px;
     letter-spacing: 2px;
     color: var(--muted);
 }
 .top-tag {
     padding: 7px 13px;
     border-radius: 999px;
-    font-size: 11px;
+    font-family: sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
     color: var(--main);
     background: var(--main-light);
     transition:
@@ -210,7 +213,8 @@ body {
     margin-bottom: 45px;
 }
 .hero-kicker {
-    font-size: 11px;
+    font-family: sans-serif;
+    font-size: 10px;
     letter-spacing: 4px;
     font-weight: 700;
     color: var(--main);
@@ -221,9 +225,9 @@ body {
     margin: 0;
     font-size:
         clamp(34px, 8vw, 62px);
-    line-height: 1.12;
-    letter-spacing: -1px;
-    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 .hero h1 .highlight {
     color: var(--main);
@@ -231,12 +235,11 @@ body {
 }
 .hero-description {
     max-width: 520px;
-    margin:
-        18px auto
-        0;
+    margin: 18px auto 0;
     color: var(--muted);
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 2;
+    letter-spacing: .5px;
 }
 /* =========================================================
    Progress
@@ -295,7 +298,8 @@ body {
     margin-bottom: 30px;
 }
 .question-number {
-    font-size: 10px;
+    font-family: sans-serif;
+    font-size: 9px;
     letter-spacing: 3px;
     color: var(--main);
     font-weight: 800;
@@ -306,25 +310,24 @@ body {
     margin: 0;
     font-size:
         clamp(25px, 5vw, 38px);
-    font-weight: 900;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 .question-description {
     margin-top: 10px;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 13px;
 }
 /* =========================================================
    Choice Grid
 ========================================================= */
 .choices {
     display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 17px;
 }
 .choices.four {
-    grid-template-columns:
-        repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 /* =========================================================
    Choice Card
@@ -348,7 +351,11 @@ body {
         0 12px 35px
         rgba(50,40,60,.07);
     cursor: pointer;
-    font-family: inherit;
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PingFang TC",
+        serif;
     text-align: center;
     transition:
         transform .25s ease,
@@ -370,17 +377,12 @@ body {
         opacity .35s ease;
 }
 .choice:hover {
-    transform:
-        translateY(-8px);
+    transform: translateY(-8px);
     box-shadow:
         0 20px 45px
         rgba(50,40,60,.13);
     border-color:
-        color-mix(
-            in srgb,
-            var(--main) 25%,
-            white
-        );
+        rgba(255,255,255,1);
 }
 .choice:hover::before {
     transform: scale(2.4);
@@ -389,23 +391,43 @@ body {
 .choice:active {
     transform: scale(.97);
 }
+/* 不再使用 Emoji */
 .choice-icon {
     position: relative;
-    font-size: 54px;
-    margin-bottom: 18px;
+    width: 42px;
+    height: 2px;
+    margin: 0 auto 28px;
+    background: var(--main);
+    opacity: .75;
     transition:
+        background .5s ease,
         transform .3s ease;
 }
+.choice-icon::before,
+.choice-icon::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--main);
+}
+.choice-icon::before {
+    left: 0;
+}
+.choice-icon::after {
+    right: 0;
+}
 .choice:hover .choice-icon {
-    transform:
-        scale(1.12)
-        rotate(-3deg);
+    transform: scaleX(1.2);
 }
 .choice-title {
     position: relative;
     font-size: 19px;
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 7px;
+    letter-spacing: 1px;
 }
 .choice-subtitle {
     position: relative;
@@ -414,12 +436,10 @@ body {
     letter-spacing: 1px;
 }
 /* =========================================================
-   Second page special
+   第二題
 ========================================================= */
 .second-note {
-    margin:
-        0 auto
-        30px;
+    margin: 0 auto 30px;
     max-width: 500px;
     text-align: center;
     color: var(--muted);
@@ -435,28 +455,24 @@ body {
 .result-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding:
-        8px 14px;
+    padding: 8px 14px;
     border-radius: 999px;
     background: var(--main-light);
     color: var(--main);
-    font-size: 10px;
+    font-family: sans-serif;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 2px;
     transition:
         background .5s ease,
         color .5s ease;
 }
-.result-eyebrow::before {
-    content: "✦";
-}
 .result-title {
-    margin:
-        18px 0 8px;
+    margin: 18px 0 8px;
     font-size:
         clamp(28px, 6vw, 44px);
-    font-weight: 900;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 .result-subtitle {
     margin: 0 0 28px;
@@ -470,18 +486,15 @@ body {
     position: relative;
     max-width: 760px;
     margin: 0 auto;
-    padding:
-        28px;
+    padding: 28px;
     border:
         1px solid
         rgba(255,255,255,.9);
     border-radius: 34px;
     background:
         rgba(255,255,255,.78);
-    backdrop-filter:
-        blur(20px);
-    box-shadow:
-        var(--shadow);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow);
     overflow: hidden;
 }
 .result-card::before {
@@ -503,9 +516,7 @@ body {
     width:
         min(65vw, 360px);
     aspect-ratio: 1;
-    margin:
-        5px auto
-        30px;
+    margin: 5px auto 30px;
     border-radius: 24px;
     padding: 7px;
     background:
@@ -551,7 +562,8 @@ body {
 ========================================================= */
 .result-category {
     color: var(--main);
-    font-size: 11px;
+    font-family: sans-serif;
+    font-size: 10px;
     letter-spacing: 3px;
     font-weight: 800;
     margin-bottom: 9px;
@@ -562,30 +574,27 @@ body {
     max-width: 650px;
     font-size:
         clamp(26px, 6vw, 42px);
-    font-weight: 900;
-    line-height: 1.25;
+    font-weight: 700;
+    line-height: 1.35;
 }
 .group-name {
     display: inline-block;
-    padding:
-        7px 15px;
+    padding: 7px 15px;
     border-radius: 999px;
     color: var(--main);
     background: var(--main-light);
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
     transition:
         color .5s ease,
         background .5s ease;
 }
 .result-message {
     max-width: 500px;
-    margin:
-        20px auto
-        28px;
+    margin: 20px auto 28px;
     color: var(--muted);
     font-size: 13px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 /* =========================================================
    Buttons
@@ -600,11 +609,14 @@ body {
     min-width: 150px;
     border: none;
     border-radius: 999px;
-    padding:
-        14px 22px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 800;
+    padding: 14px 22px;
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PingFang TC",
+        serif;
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
     transition:
         transform .2s ease,
@@ -624,20 +636,12 @@ body {
         );
     box-shadow:
         0 10px 25px
-        color-mix(
-            in srgb,
-            var(--main) 25%,
-            transparent
-        );
+        rgba(80,60,80,.15);
 }
 .btn-primary:hover {
     box-shadow:
         0 14px 30px
-        color-mix(
-            in srgb,
-            var(--main) 35%,
-            transparent
-        );
+        rgba(80,60,80,.2);
 }
 .btn-secondary {
     color: #555;
@@ -654,7 +658,8 @@ body {
     margin-top: 45px;
     text-align: center;
     color: #aaa;
-    font-size: 10px;
+    font-family: sans-serif;
+    font-size: 9px;
     line-height: 1.8;
     letter-spacing: .5px;
 }
@@ -693,11 +698,10 @@ body {
         border-radius: 22px;
     }
     .choice-icon {
-        width: 58px;
+        width: 42px;
         flex-shrink: 0;
-        margin: 0;
+        margin: 0 18px 0 0;
         text-align: center;
-        font-size: 38px;
     }
     .choice-title {
         font-size: 17px;
@@ -706,7 +710,8 @@ body {
         font-size: 11px;
     }
     .result-card {
-        padding: 20px 15px 25px;
+        padding:
+            20px 15px 25px;
         border-radius: 27px;
     }
     .album-wrapper {
@@ -725,9 +730,6 @@ body {
 </style>
 </head>
 <body>
-<!-- =========================================================
-     背景
-========================================================= -->
 <div class="background-decoration">
     <div class="glow one"></div>
     <div class="glow two"></div>
@@ -743,14 +745,10 @@ body {
 ========================================================= -->
 <div class="topbar">
     <div class="logo">
-        <div class="logo-mark">
-            ♪
-        </div>
+        <div class="logo-mark"></div>
         <div class="logo-text">
             LOVE LIVE!
-            <span>
-                RANDOM SONG
-            </span>
+            <span>RANDOM SONG</span>
         </div>
     </div>
     <div class="top-tag">
@@ -816,54 +814,36 @@ body {
         </div>
     </div>
     <div class="choices">
-        <!-- μ's -->
         <button
             class="choice"
             onclick="selectMood('muse')"
         >
-            <div class="choice-icon">
-                🌸
-            </div>
+            <div class="choice-icon"></div>
             <div>
                 <div class="choice-title">
                     綻放的櫻花
                 </div>
-                <div class="choice-subtitle">
-                    μ's
-                </div>
             </div>
         </button>
-        <!-- Aqours -->
         <button
             class="choice"
             onclick="selectMood('aqours')"
         >
-            <div class="choice-icon">
-                🌊
-            </div>
+            <div class="choice-icon"></div>
             <div>
                 <div class="choice-title">
                     洶湧的海浪
                 </div>
-                <div class="choice-subtitle">
-                    Aqours
-                </div>
             </div>
         </button>
-        <!-- Liella -->
         <button
             class="choice"
             onclick="selectMood('liella')"
         >
-            <div class="choice-icon">
-                ✨
-            </div>
+            <div class="choice-icon"></div>
             <div>
                 <div class="choice-title">
                     平靜的星辰
-                </div>
-                <div class="choice-subtitle">
-                    Liella!
                 </div>
             </div>
         </button>
@@ -948,19 +928,19 @@ body {
                 class="btn btn-primary"
                 onclick="drawAgain()"
             >
-                ✦ 再抽一首
+                再抽一首
             </button>
             <button
                 class="btn btn-secondary"
                 onclick="restart()"
             >
-                ↻ 重新開始
+                重新開始
             </button>
             <button
                 class="btn btn-secondary"
                 onclick="listenSong()"
             >
-                ♫ 跳轉聽歌
+                跳轉聽歌
             </button>
         </div>
     </div>
@@ -998,13 +978,16 @@ const themes = {
 };
 /* =========================================================
    歌曲資料
-   請把正式歌曲資料放在這裡。
-   cover：
-   可以使用網路圖片網址，
-   或者改成：
-   images/song01.jpg
-   url：
-   放 YouTube / Apple Music / Spotify 等歌曲網址。
+=========================================================
+   之後你只需要修改：
+   name  = 歌名
+   group = 團名
+   cover = 封面圖片位置
+   url   = 聽歌網址
+   例如：
+   cover: "images/snow-halation.jpg"
+   url:
+   "https://www.youtube.com/results?search_query=LoveLive+Snow+halation"
 ========================================================= */
 const songData = {
     muse: {
@@ -1284,84 +1267,65 @@ const songData = {
 };
 /* =========================================================
    第二題選項
+=========================================================
+   注意：
+   這裡故意不放團名。
+   使用者只能看到意境名稱，
+   不會知道自己選的是哪一個小隊。
 ========================================================= */
 const groupOptions = {
     muse: [
         {
             key: "lilywhite",
-            icon: "🌱",
-            title: "含苞初放",
-            subtitle: "lily white"
+            title: "含苞初放"
         },
         {
             key: "bibi",
-            icon: "🔥",
-            title: "熱情滿開",
-            subtitle: "BiBi"
+            title: "熱情滿開"
         },
         {
             key: "printemp",
-            icon: "🌸",
-            title: "浪漫吹雪",
-            subtitle: "Printemps"
+            title: "浪漫吹雪"
         },
         {
             key: "muse_all",
-            icon: "🌸",
-            title: "賞櫻百景",
-            subtitle: "μ's 團曲"
+            title: "賞櫻百景"
         }
     ],
     aqours: [
         {
             key: "cyaron",
-            icon: "💦",
-            title: "歡快碎浪",
-            subtitle: "CYaRon!"
+            title: "歡快碎浪"
         },
         {
             key: "azalea",
-            icon: "🌊",
-            title: "溫柔浪擁",
-            subtitle: "AZALEA"
+            title: "溫柔浪擁"
         },
         {
             key: "guilty",
-            icon: "🌙",
-            title: "神秘夜浪",
-            subtitle: "Guilty Kiss"
+            title: "神秘夜浪"
         },
         {
             key: "aqours_all",
-            icon: "🌊",
-            title: "海納百川",
-            subtitle: "Aqours 團曲"
+            title: "海納百川"
         }
     ],
     liella: [
         {
             key: "sync",
-            icon: "✨",
-            title: "星光躍動",
-            subtitle: "5yncri5e!"
+            title: "星光躍動"
         },
         {
             key: "catchu",
-            icon: "🌟",
-            title: "神秘星閃",
-            subtitle: "CatChu!"
+            title: "神秘星閃"
         },
         {
             key: "kaleido",
-            icon: "🌌",
-            title: "星語如歌",
-            subtitle: "KALEIDOSCORE"
+            title: "星語如歌"
         },
         {
             key: "liella_all",
-            icon: "⭐",
-            title: "群星集結",
-            subtitle: "Liella! 團曲"
+            title: "群星集結"
         }
     ]
 };
@@ -1429,8 +1393,8 @@ function renderGroupChoices(mood) {
         description.textContent =
             "如果今天抬頭看見星空，你想看見哪一片星光？";
     }
-    groupOptions[mood]
-        .forEach(option => {
+    groupOptions[mood].forEach(
+        option => {
             const button =
                 document.createElement(
                     "button"
@@ -1438,37 +1402,34 @@ function renderGroupChoices(mood) {
             button.className =
                 "choice";
             button.innerHTML = `
-                <div class="choice-icon">
-                    ${option.icon}
-                </div>
+                <div class="choice-icon"></div>
                 <div>
                     <div class="choice-title">
                         ${option.title}
                     </div>
-                    <div class="choice-subtitle">
-                        ${option.subtitle}
-                    </div>
                 </div>
             `;
-            button.onclick = function() {
-                selectGroup(
-                    option.key
-                );
-            };
+            button.onclick =
+                function() {
+                    selectGroup(
+                        option.key
+                    );
+                };
             container.appendChild(
                 button
             );
-        });
+        }
+    );
 }
 /* =========================================================
-   選擇小分隊
+   選擇分類
 ========================================================= */
 function selectGroup(group) {
     selectedGroup = group;
     showResult();
 }
 /* =========================================================
-   隨機
+   隨機歌曲
 ========================================================= */
 function randomSong(songs) {
     const index =
@@ -1526,7 +1487,10 @@ function showResult() {
    再抽一首
 ========================================================= */
 function drawAgain() {
-    if (!selectedMood || !selectedGroup) {
+    if (
+        !selectedMood ||
+        !selectedGroup
+    ) {
         return;
     }
     showResult();
