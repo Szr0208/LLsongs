@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoveLive! 今日推薦歌曲</title>
+<style>
+/* =========================================================
+   基本設定
+========================================================= */
+* {
+    box-sizing: border-box;
+}
+:root {
+    --main: #ef8fad;
+    --main-light: #fff0f5;
+    --main-dark: #d86f91;
+    --text: #303038;
+    --muted: #888892;
+    --white: rgba(255,255,255,.88);
+    --bg1: #fff7fa;
+    --bg2: #fdfdfd;
+    --shadow:
+        0 20px 60px rgba(80,60,80,.10);
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family:
+        "Noto Sans TC",
+        "PingFang TC",
+        "Microsoft JhengHei",
+        sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(255,255,255,.95),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            var(--main-light),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            var(--bg1),
+            var(--bg2)
+        );
+    overflow-x: hidden;
+    transition:
+        background .8s ease,
+        --main .5s ease;
+}
+/* =========================================================
+   背景裝飾
+========================================================= */
+.background-decoration {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+.glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: var(--main);
+    opacity: .07;
+    filter: blur(60px);
+    transition: background .8s ease;
+}
+.glow.one {
+    top: -120px;
+    left: -80px;
+}
+.glow.two {
+    right: -120px;
+    bottom: -100px;
+    width: 380px;
+    height: 380px;
+}
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--main);
+    opacity: .25;
+    animation:
+        floating 5s ease-in-out infinite;
+    transition: background .8s ease;
+}
+.particle:nth-child(3) {
+    left: 12%;
+    top: 35%;
+    animation-delay: .5s;
+}
+.particle:nth-child(4) {
+    left: 78%;
+    top: 20%;
+    animation-delay: 1.4s;
+}
+.particle:nth-child(5) {
+    left: 88%;
+    top: 65%;
+    animation-delay: 2s;
+}
+.particle:nth-child(6) {
+    left: 22%;
+    top: 82%;
+    animation-delay: 2.8s;
+}
+@keyframes floating {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-18px);
+    }
+}
+/* =========================================================
+   主容器
+========================================================= */
+.page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding:
+        28px
+        18px
+        50px;
+}
+.container {
+    width: 100%;
+    max-width: 900px;
+}
+/* =========================================================
+   Top Navigation
+========================================================= */
+.topbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+.logo-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background:
+        linear-gradient(
+            135deg,
+            var(--main),
+            var(--main-dark)
+        );
+    box-shadow:
+        0 7px 20px
+        color-mix(
+            in srgb,
+            var(--main) 30%,
+            transparent
+        );
+    transition: background .5s ease;
+}
+.logo-text {
+    font-size: 13px;
+    line-height: 1.2;
+}
+.logo-text span {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+.top-tag {
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 11px;
+    color: var(--main);
+    background: var(--main-light);
+    transition:
+        background .5s ease,
+        color .5s ease;
+}
+/* =========================================================
+   Hero
+========================================================= */
+.hero {
+    text-align: center;
+    margin-bottom: 45px;
+}
+.hero-kicker {
+    font-size: 11px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: var(--main);
+    margin-bottom: 15px;
+    transition: color .5s ease;
+}
+.hero h1 {
+    margin: 0;
+    font-size:
+        clamp(34px, 8vw, 62px);
+    line-height: 1.12;
+    letter-spacing: -1px;
+    font-weight: 900;
+}
+.hero h1 .highlight {
+    color: var(--main);
+    transition: color .5s ease;
+}
+.hero-description {
+    max-width: 520px;
+    margin:
+        18px auto
+        0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+/* =========================================================
+   Progress
+========================================================= */
+.progress-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+.progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.progress-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: all .4s ease;
+}
+.progress-dot.active {
+    width: 30px;
+    background: var(--main);
+    border-radius: 999px;
+    transition:
+        background .5s ease,
+        width .4s ease;
+}
+/* =========================================================
+   Screen
+========================================================= */
+.screen {
+    display: none;
+    animation:
+        screenIn .55s cubic-bezier(.2,.8,.2,1);
+}
+.screen.active {
+    display: block;
+}
+@keyframes screenIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* =========================================================
+   問題標題
+========================================================= */
+.question-area {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.question-number {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--main);
+    font-weight: 800;
+    margin-bottom: 10px;
+    transition: color .5s ease;
+}
+.question {
+    margin: 0;
+    font-size:
+        clamp(25px, 5vw, 38px);
+    font-weight: 900;
+}
+.question-description {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 14px;
+}
+/* =========================================================
+   Choice Grid
+========================================================= */
+.choices {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 17px;
+}
+.choices.four {
+    grid-template-columns:
+        repeat(2, 1fr);
+}
+/* =========================================================
+   Choice Card
+========================================================= */
+.choice {
+    position: relative;
+    overflow: hidden;
+    min-height: 210px;
+    padding: 28px 22px;
+    border:
+        1px solid
+        rgba(255,255,255,.8);
+    border-radius: 28px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.94),
+            rgba(255,255,255,.68)
+        );
+    box-shadow:
+        0 12px 35px
+        rgba(50,40,60,.07);
+    cursor: pointer;
+    font-family: inherit;
+    text-align: center;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border .25s ease;
+}
+.choice::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: -60px;
+    right: -60px;
+    border-radius: 50%;
+    background: var(--main);
+    opacity: .07;
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+}
+.choice:hover {
+    transform:
+        translateY(-8px);
+    box-shadow:
+        0 20px 45px
+        rgba(50,40,60,.13);
+    border-color:
+        color-mix(
+            in srgb,
+            var(--main) 25%,
+            white
+        );
+}
+.choice:hover::before {
+    transform: scale(2.4);
+    opacity: .11;
+}
+.choice:active {
+    transform: scale(.97);
+}
+.choice-icon {
+    position: relative;
+    font-size: 54px;
+    margin-bottom: 18px;
+    transition:
+        transform .3s ease;
+}
+.choice:hover .choice-icon {
+    transform:
+        scale(1.12)
+        rotate(-3deg);
+}
+.choice-title {
+    position: relative;
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+.choice-subtitle {
+    position: relative;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+/* =========================================================
+   Second page special
+========================================================= */
+.second-note {
+    margin:
+        0 auto
+        30px;
+    max-width: 500px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+/* =========================================================
+   Result
+========================================================= */
+.result-section {
+    text-align: center;
+}
+.result-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding:
+        8px 14px;
+    border-radius: 999px;
+    background: var(--main-light);
+    color: var(--main);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    transition:
+        background .5s ease,
+        color .5s ease;
+}
+.result-eyebrow::before {
+    content: "✦";
+}
+.result-title {
+    margin:
+        18px 0 8px;
+    font-size:
+        clamp(28px, 6vw, 44px);
+    font-weight: 900;
+}
+.result-subtitle {
+    margin: 0 0 28px;
+    color: var(--muted);
+    font-size: 14px;
+}
+/* =========================================================
+   Result Card
+========================================================= */
+.result-card {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    padding:
+        28px;
+    border:
+        1px solid
+        rgba(255,255,255,.9);
+    border-radius: 34px;
+    background:
+        rgba(255,255,255,.78);
+    backdrop-filter:
+        blur(20px);
+    box-shadow:
+        var(--shadow);
+    overflow: hidden;
+}
+.result-card::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: -190px;
+    right: -150px;
+    border-radius: 50%;
+    background: var(--main);
+    opacity: .06;
+}
+/* =========================================================
+   Album
+========================================================= */
+.album-wrapper {
+    position: relative;
+    width:
+        min(65vw, 360px);
+    aspect-ratio: 1;
+    margin:
+        5px auto
+        30px;
+    border-radius: 24px;
+    padding: 7px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            var(--main-light)
+        );
+    box-shadow:
+        0 25px 55px
+        rgba(40,30,50,.16);
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+.album-wrapper:hover {
+    transform:
+        translateY(-6px)
+        rotate(-1deg);
+    box-shadow:
+        0 30px 65px
+        rgba(40,30,50,.20);
+}
+.album-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+    border-radius: 35px;
+    background: var(--main);
+    opacity: .09;
+    filter: blur(25px);
+    z-index: -1;
+}
+.album-wrapper img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 19px;
+}
+/* =========================================================
+   Result Information
+========================================================= */
+.result-category {
+    color: var(--main);
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 800;
+    margin-bottom: 9px;
+    transition: color .5s ease;
+}
+.song-name {
+    margin: 0 auto 10px;
+    max-width: 650px;
+    font-size:
+        clamp(26px, 6vw, 42px);
+    font-weight: 900;
+    line-height: 1.25;
+}
+.group-name {
+    display: inline-block;
+    padding:
+        7px 15px;
+    border-radius: 999px;
+    color: var(--main);
+    background: var(--main-light);
+    font-size: 13px;
+    font-weight: 800;
+    transition:
+        color .5s ease,
+        background .5s ease;
+}
+.result-message {
+    max-width: 500px;
+    margin:
+        20px auto
+        28px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+/* =========================================================
+   Buttons
+========================================================= */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 11px;
+    flex-wrap: wrap;
+}
+.btn {
+    min-width: 150px;
+    border: none;
+    border-radius: 999px;
+    padding:
+        14px 22px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .4s ease;
+}
+.btn:hover {
+    transform: translateY(-3px);
+}
+.btn-primary {
+    color: white;
+    background:
+        linear-gradient(
+            135deg,
+            var(--main),
+            var(--main-dark)
+        );
+    box-shadow:
+        0 10px 25px
+        color-mix(
+            in srgb,
+            var(--main) 25%,
+            transparent
+        );
+}
+.btn-primary:hover {
+    box-shadow:
+        0 14px 30px
+        color-mix(
+            in srgb,
+            var(--main) 35%,
+            transparent
+        );
+}
+.btn-secondary {
+    color: #555;
+    background:
+        rgba(245,245,247,.95);
+}
+.btn-secondary:hover {
+    background: #eeeeF2;
+}
+/* =========================================================
+   Footer
+========================================================= */
+.footer {
+    margin-top: 45px;
+    text-align: center;
+    color: #aaa;
+    font-size: 10px;
+    line-height: 1.8;
+    letter-spacing: .5px;
+}
+/* =========================================================
+   Mobile
+========================================================= */
+@media (max-width: 650px) {
+    .page {
+        padding:
+            20px 14px
+            40px;
+    }
+    .topbar {
+        margin-bottom: 40px;
+    }
+    .top-tag {
+        display: none;
+    }
+    .hero {
+        margin-bottom: 35px;
+    }
+    .hero-description {
+        font-size: 13px;
+    }
+    .choices,
+    .choices.four {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .choice {
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding: 18px;
+        border-radius: 22px;
+    }
+    .choice-icon {
+        width: 58px;
+        flex-shrink: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 38px;
+    }
+    .choice-title {
+        font-size: 17px;
+    }
+    .choice-subtitle {
+        font-size: 11px;
+    }
+    .result-card {
+        padding: 20px 15px 25px;
+        border-radius: 27px;
+    }
+    .album-wrapper {
+        width:
+            min(78vw, 320px);
+        border-radius: 21px;
+    }
+    .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn {
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+<!-- =========================================================
+     背景
+========================================================= -->
+<div class="background-decoration">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
+<div class="page">
+<div class="container">
+<!-- =========================================================
+     TOP
+========================================================= -->
+<div class="topbar">
+    <div class="logo">
+        <div class="logo-mark">
+            ♪
+        </div>
+        <div class="logo-text">
+            LOVE LIVE!
+            <span>
+                RANDOM SONG
+            </span>
+        </div>
+    </div>
+    <div class="top-tag">
+        FAN PROJECT
+    </div>
+</div>
+<!-- =========================================================
+     HERO
+========================================================= -->
+<div class="hero">
+    <div class="hero-kicker">
+        LOVE LIVE! SONG SELECTOR
+    </div>
+    <h1>
+        今天的你，<br>
+        <span class="highlight">
+            適合哪首歌？
+        </span>
+    </h1>
+    <div class="hero-description">
+        用兩個小問題，
+        找到今天屬於你的 LoveLive! 歌曲。
+        <br>
+        不需要思考太久，
+        憑直覺選就好了。
+    </div>
+</div>
+<!-- =========================================================
+     PROGRESS
+========================================================= -->
+<div class="progress-wrapper">
+    <div class="progress">
+        <div
+            class="progress-dot active"
+            id="dot1">
+        </div>
+        <div
+            class="progress-dot"
+            id="dot2">
+        </div>
+        <div
+            class="progress-dot"
+            id="dot3">
+        </div>
+    </div>
+</div>
+<!-- =========================================================
+     SCREEN 1
+========================================================= -->
+<section
+    class="screen active"
+    id="screen1"
+>
+    <div class="question-area">
+        <div class="question-number">
+            QUESTION 01
+        </div>
+        <h2 class="question">
+            今天的心情比較像什麼？
+        </h2>
+        <div class="question-description">
+            選一個最接近現在的你。
+        </div>
+    </div>
+    <div class="choices">
+        <!-- μ's -->
+        <button
+            class="choice"
+            onclick="selectMood('muse')"
+        >
+            <div class="choice-icon">
+                🌸
+            </div>
+            <div>
+                <div class="choice-title">
+                    綻放的櫻花
+                </div>
+                <div class="choice-subtitle">
+                    μ's
+                </div>
+            </div>
+        </button>
+        <!-- Aqours -->
+        <button
+            class="choice"
+            onclick="selectMood('aqours')"
+        >
+            <div class="choice-icon">
+                🌊
+            </div>
+            <div>
+                <div class="choice-title">
+                    洶湧的海浪
+                </div>
+                <div class="choice-subtitle">
+                    Aqours
+                </div>
+            </div>
+        </button>
+        <!-- Liella -->
+        <button
+            class="choice"
+            onclick="selectMood('liella')"
+        >
+            <div class="choice-icon">
+                ✨
+            </div>
+            <div>
+                <div class="choice-title">
+                    平靜的星辰
+                </div>
+                <div class="choice-subtitle">
+                    Liella!
+                </div>
+            </div>
+        </button>
+    </div>
+</section>
+<!-- =========================================================
+     SCREEN 2
+========================================================= -->
+<section
+    class="screen"
+    id="screen2"
+>
+    <div class="question-area">
+        <div class="question-number">
+            QUESTION 02
+        </div>
+        <h2 class="question">
+            喜歡什麼樣的景色？
+        </h2>
+        <div
+            class="question-description"
+            id="groupDescription"
+        >
+            選擇一種屬於你的風景。
+        </div>
+    </div>
+    <div
+        class="choices four"
+        id="groupChoices"
+    >
+    </div>
+</section>
+<!-- =========================================================
+     SCREEN 3
+========================================================= -->
+<section
+    class="screen result-section"
+    id="screen3"
+>
+    <div class="result-eyebrow">
+        YOUR LOVE LIVE! SONG
+    </div>
+    <h2 class="result-title">
+        今天的命定歌曲
+    </h2>
+    <p class="result-subtitle">
+        這首歌，現在正好適合你。
+    </p>
+    <div class="result-card">
+        <div class="album-wrapper">
+            <img
+                id="albumCover"
+                src=""
+                alt="歌曲封面"
+            >
+        </div>
+        <div
+            class="result-category"
+            id="resultCategory"
+        >
+            RECOMMENDED FOR YOU
+        </div>
+        <h3
+            class="song-name"
+            id="songName"
+        >
+            歌曲名稱
+        </h3>
+        <div
+            class="group-name"
+            id="groupName"
+        >
+            團體名稱
+        </div>
+        <p class="result-message">
+            今天的你，也許正適合這首歌。<br>
+            不妨戴上耳機，
+            讓 LoveLive! 陪你走一段吧。
+        </p>
+        <div class="buttons">
+            <button
+                class="btn btn-primary"
+                onclick="drawAgain()"
+            >
+                ✦ 再抽一首
+            </button>
+            <button
+                class="btn btn-secondary"
+                onclick="restart()"
+            >
+                ↻ 重新開始
+            </button>
+            <button
+                class="btn btn-secondary"
+                onclick="listenSong()"
+            >
+                ♫ 跳轉聽歌
+            </button>
+        </div>
+    </div>
+</section>
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<div class="footer">
+    LoveLive! Song Selector
+    <br>
+    非官方粉絲企劃網站・Fan Project
+</div>
+</div>
+</div>
+<script>
+/* =========================================================
+   主題
+========================================================= */
+const themes = {
+    muse: {
+        main: "#e88aa7",
+        light: "#fff0f5",
+        dark: "#d66c8f"
+    },
+    aqours: {
+        main: "#56a9df",
+        light: "#edf8ff",
+        dark: "#378dc7"
+    },
+    liella: {
+        main: "#a684d8",
+        light: "#f4efff",
+        dark: "#8966c4"
+    }
+};
+/* =========================================================
+   歌曲資料
+   請把正式歌曲資料放在這裡。
+   cover：
+   可以使用網路圖片網址，
+   或者改成：
+   images/song01.jpg
+   url：
+   放 YouTube / Apple Music / Spotify 等歌曲網址。
+========================================================= */
+const songData = {
+    muse: {
+        lilywhite: {
+            title: "含苞初放",
+            songs: [
+                {
+                    name: "微熱からMystery",
+                    group: "lily white",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+微熱からMystery"
+                },
+                {
+                    name: "知らないLove*教えてLove",
+                    group: "lily white",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+知らないLove+教えてLove"
+                },
+                {
+                    name: "秋のあなたの空遠く",
+                    group: "lily white",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+秋のあなたの空遠く"
+                }
+            ]
+        },
+        bibi: {
+            title: "熱情滿開",
+            songs: [
+                {
+                    name: "Cutie Panther",
+                    group: "BiBi",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=BiBi",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+Cutie+Panther"
+                },
+                {
+                    name: "PSYCHIC FIRE",
+                    group: "BiBi",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=BiBi",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+PSYCHIC+FIRE"
+                }
+            ]
+        },
+        printemp: {
+            title: "浪漫吹雪",
+            songs: [
+                {
+                    name: "Love marginal",
+                    group: "Printemps",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=Printemps",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+Love+marginal"
+                },
+                {
+                    name: "sweet&sweet holiday",
+                    group: "Printemps",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=Printemps",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+sweet+sweet+holiday"
+                }
+            ]
+        },
+        muse_all: {
+            title: "賞櫻百景",
+            songs: [
+                {
+                    name: "Snow halation",
+                    group: "μ's",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=μ's",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+Snow+halation"
+                },
+                {
+                    name: "僕らは今のなかで",
+                    group: "μ's",
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=μ's",
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+僕らは今のなかで"
+                }
+            ]
+        }
+    },
+    aqours: {
+        cyaron: {
+            title: "歡快碎浪",
+            songs: [
+                {
+                    name: "元気全開DAY! DAY! DAY!",
+                    group: "CYaRon!",
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+元気全開DAY+DAY+DAY"
+                },
+                {
+                    name: "近未来ハッピーエンド",
+                    group: "CYaRon!",
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+近未来ハッピーエンド"
+                }
+            ]
+        },
+        azalea: {
+            title: "溫柔浪擁",
+            songs: [
+                {
+                    name: "トリコリコPLEASE!!",
+                    group: "AZALEA",
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+トリコリコPLEASE"
+                },
+                {
+                    name: "GALAXY HidE and SeeK",
+                    group: "AZALEA",
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+GALAXY+HidE+and+SeeK"
+                }
+            ]
+        },
+        guilty: {
+            title: "神秘夜浪",
+            songs: [
+                {
+                    name: "Strawberry Trapper",
+                    group: "Guilty Kiss",
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+Strawberry+Trapper"
+                },
+                {
+                    name: "Guilty Eyes Fever",
+                    group: "Guilty Kiss",
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+Guilty+Eyes+Fever"
+                }
+            ]
+        },
+        aqours_all: {
+            title: "海納百川",
+            songs: [
+                {
+                    name: "君のこころは輝いてるかい？",
+                    group: "Aqours",
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=Aqours",
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+君のこころは輝いてるかい"
+                },
+                {
+                    name: "青空Jumping Heart",
+                    group: "Aqours",
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=Aqours",
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+青空Jumping+Heart"
+                }
+            ]
+        }
+    },
+    liella: {
+        sync: {
+            title: "星光躍動",
+            songs: [
+                {
+                    name: "オルタネイト",
+                    group: "5yncri5e!",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+5yncri5e"
+                },
+                {
+                    name: "Thank you Good morning",
+                    group: "5yncri5e!",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+5yncri5e"
+                }
+            ]
+        },
+        catchu: {
+            title: "神秘星閃",
+            songs: [
+                {
+                    name: "What a Wonderful Dream!!",
+                    group: "CatChu!",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+CatChu"
+                },
+                {
+                    name: "オルタネイト",
+                    group: "CatChu!",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+CatChu"
+                }
+            ]
+        },
+        kaleido: {
+            title: "星語如歌",
+            songs: [
+                {
+                    name: "不可視なブルー",
+                    group: "KALEIDOSCORE",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
+                },
+                {
+                    name: "ニュートラル",
+                    group: "KALEIDOSCORE",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
+                }
+            ]
+        },
+        liella_all: {
+            title: "群星集結",
+            songs: [
+                {
+                    name: "始まりは君の空",
+                    group: "Liella!",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+始まりは君の空"
+                },
+                {
+                    name: "未来予報ハレルヤ！",
+                    group: "Liella!",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+未来予報ハレルヤ"
+                },
+                {
+                    name: "ノンフィクション!!",
+                    group: "Liella!",
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+ノンフィクション"
+                }
+            ]
+        }
+    }
+};
+/* =========================================================
+   第二題選項
+========================================================= */
+const groupOptions = {
+    muse: [
+        {
+            key: "lilywhite",
+            icon: "🌱",
+            title: "含苞初放",
+            subtitle: "lily white"
+        },
+        {
+            key: "bibi",
+            icon: "🔥",
+            title: "熱情滿開",
+            subtitle: "BiBi"
+        },
+        {
+            key: "printemp",
+            icon: "🌸",
+            title: "浪漫吹雪",
+            subtitle: "Printemps"
+        },
+        {
+            key: "muse_all",
+            icon: "🌸",
+            title: "賞櫻百景",
+            subtitle: "μ's 團曲"
+        }
+    ],
+    aqours: [
+        {
+            key: "cyaron",
+            icon: "💦",
+            title: "歡快碎浪",
+            subtitle: "CYaRon!"
+        },
+        {
+            key: "azalea",
+            icon: "🌊",
+            title: "溫柔浪擁",
+            subtitle: "AZALEA"
+        },
+        {
+            key: "guilty",
+            icon: "🌙",
+            title: "神秘夜浪",
+            subtitle: "Guilty Kiss"
+        },
+        {
+            key: "aqours_all",
+            icon: "🌊",
+            title: "海納百川",
+            subtitle: "Aqours 團曲"
+        }
+    ],
+    liella: [
+        {
+            key: "sync",
+            icon: "✨",
+            title: "星光躍動",
+            subtitle: "5yncri5e!"
+        },
+        {
+            key: "catchu",
+            icon: "🌟",
+            title: "神秘星閃",
+            subtitle: "CatChu!"
+        },
+        {
+            key: "kaleido",
+            icon: "🌌",
+            title: "星語如歌",
+            subtitle: "KALEIDOSCORE"
+        },
+        {
+            key: "liella_all",
+            icon: "⭐",
+            title: "群星集結",
+            subtitle: "Liella! 團曲"
+        }
+    ]
+};
+/* =========================================================
+   狀態
+========================================================= */
+let selectedMood = null;
+let selectedGroup = null;
+let currentSong = null;
+/* =========================================================
+   切換主題
+========================================================= */
+function setTheme(mood) {
+    const theme = themes[mood];
+    document.documentElement
+        .style
+        .setProperty(
+            "--main",
+            theme.main
+        );
+    document.documentElement
+        .style
+        .setProperty(
+            "--main-light",
+            theme.light
+        );
+    document.documentElement
+        .style
+        .setProperty(
+            "--main-dark",
+            theme.dark
+        );
+}
+/* =========================================================
+   選擇心情
+========================================================= */
+function selectMood(mood) {
+    selectedMood = mood;
+    setTheme(mood);
+    renderGroupChoices(mood);
+    showScreen(2);
+}
+/* =========================================================
+   產生第二題
+========================================================= */
+function renderGroupChoices(mood) {
+    const container =
+        document.getElementById(
+            "groupChoices"
+        );
+    const description =
+        document.getElementById(
+            "groupDescription"
+        );
+    container.innerHTML = "";
+    if (mood === "muse") {
+        description.textContent =
+            "如果今天是一片櫻花，你想看見哪一種風景？";
+    }
+    else if (mood === "aqours") {
+        description.textContent =
+            "如果今天是一片海，你想遇見哪一種浪？";
+    }
+    else {
+        description.textContent =
+            "如果今天抬頭看見星空，你想看見哪一片星光？";
+    }
+    groupOptions[mood]
+        .forEach(option => {
+            const button =
+                document.createElement(
+                    "button"
+                );
+            button.className =
+                "choice";
+            button.innerHTML = `
+                <div class="choice-icon">
+                    ${option.icon}
+                </div>
+                <div>
+                    <div class="choice-title">
+                        ${option.title}
+                    </div>
+                    <div class="choice-subtitle">
+                        ${option.subtitle}
+                    </div>
+                </div>
+            `;
+            button.onclick = function() {
+                selectGroup(
+                    option.key
+                );
+            };
+            container.appendChild(
+                button
+            );
+        });
+}
+/* =========================================================
+   選擇小分隊
+========================================================= */
+function selectGroup(group) {
+    selectedGroup = group;
+    showResult();
+}
+/* =========================================================
+   隨機
+========================================================= */
+function randomSong(songs) {
+    const index =
+        Math.floor(
+            Math.random() *
+            songs.length
+        );
+    return songs[index];
+}
+/* =========================================================
+   顯示結果
+========================================================= */
+function showResult() {
+    const category =
+        songData
+        [selectedMood]
+        [selectedGroup];
+    if (
+        !category ||
+        !category.songs ||
+        category.songs.length === 0
+    ) {
+        alert(
+            "這個分類目前還沒有歌曲資料。"
+        );
+        return;
+    }
+    currentSong =
+        randomSong(
+            category.songs
+        );
+    document
+        .getElementById("songName")
+        .textContent =
+        currentSong.name;
+    document
+        .getElementById("groupName")
+        .textContent =
+        currentSong.group;
+    document
+        .getElementById("albumCover")
+        .src =
+        currentSong.cover;
+    document
+        .getElementById("albumCover")
+        .alt =
+        currentSong.name;
+    document
+        .getElementById("resultCategory")
+        .textContent =
+        category.title;
+    showScreen(3);
+}
+/* =========================================================
+   再抽一首
+========================================================= */
+function drawAgain() {
+    if (!selectedMood || !selectedGroup) {
+        return;
+    }
+    showResult();
+}
+/* =========================================================
+   重新開始
+========================================================= */
+function restart() {
+    selectedMood = null;
+    selectedGroup = null;
+    currentSong = null;
+    setTheme("muse");
+    showScreen(1);
+}
+/* =========================================================
+   跳轉聽歌
+========================================================= */
+function listenSong() {
+    if (
+        !currentSong ||
+        !currentSong.url
+    ) {
+        return;
+    }
+    window.open(
+        currentSong.url,
+        "_blank"
+    );
+}
+/* =========================================================
+   Screen 切換
+========================================================= */
+function showScreen(number) {
+    document
+        .querySelectorAll(".screen")
+        .forEach(
+            screen => {
+                screen.classList
+                    .remove("active");
+            }
+        );
+    document
+        .getElementById(
+            "screen" + number
+        )
+        .classList
+        .add("active");
+    document
+        .querySelectorAll(".progress-dot")
+        .forEach(
+            dot => {
+                dot.classList
+                    .remove("active");
+            }
+        );
+    for (
+        let i = 1;
+        i <= number;
+        i++
+    ) {
+        document
+            .getElementById(
+                "dot" + i
+            )
+            .classList
+            .add("active");
+    }
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+</script>
+</body>
+</html>
