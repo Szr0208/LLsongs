@@ -2187,37 +2187,49 @@ function showResult() {
         currentSong.group;
 
 
+    /* =====================================================
+       顯示歌曲封面
+       自動嘗試 0～4 個檔名前導空格
+    ===================================================== */
+
     const albumCover =
-    document.getElementById("albumCover");
+        document.getElementById("albumCover");
 
-let imageTry = 0;
+    let imageTry = 0;
 
-function tryAlbumImage() {
 
-    const spaces =
-        " ".repeat(imageTry);
+    function tryAlbumImage() {
 
-    albumCover.src =
-        spaces + currentSong.cover;
+        const spaces =
+            "%20".repeat(imageTry);
 
-}
 
-albumCover.onerror = function() {
-
-    imageTry++;
-
-    if (imageTry <= 4) {
-
-        tryAlbumImage();
+        albumCover.src =
+            spaces + currentSong.cover;
 
     }
 
-};
 
-tryAlbumImage();
+    albumCover.onerror =
+        function() {
 
-albumCover.alt =
-    currentSong.name;
+            imageTry++;
+
+
+            if (imageTry <= 4) {
+
+                tryAlbumImage();
+
+            }
+
+        };
+
+
+    tryAlbumImage();
+
+
+    albumCover.alt =
+        currentSong.name;
 
 
     document
@@ -2229,7 +2241,6 @@ albumCover.alt =
     showScreen(3);
 
 }
-
 
 /* =========================================================
    重新開始
