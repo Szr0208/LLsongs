@@ -3,15 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>LoveLive! 今日推薦歌曲</title>
-<!-- Noto Serif TC：網站直接載入明體／宋體字型 -->
+
+<!-- 直接載入真正的明體 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
 * {
     box-sizing: border-box;
 }
+
 :root {
     --main: #ef8fad;
     --main-light: #fff0f5;
@@ -23,14 +28,26 @@
     --bg2: #fdfdfd;
     --shadow: 0 20px 60px rgba(80,60,80,.10);
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: "Noto Serif TC", serif;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        "Songti TC",
+        "Songti SC",
+        serif !important;
+
     color: var(--text);
+
     background:
         radial-gradient(
             circle at 15% 10%,
@@ -47,12 +64,16 @@ body {
             var(--bg1),
             var(--bg2)
         );
+
     overflow-x: hidden;
     transition: background .8s ease;
 }
+
+
 /* =========================================================
    背景裝飾
 ========================================================= */
+
 .background-decoration {
     position: fixed;
     inset: 0;
@@ -60,6 +81,7 @@ body {
     overflow: hidden;
     z-index: -1;
 }
+
 .glow {
     position: absolute;
     width: 300px;
@@ -70,16 +92,19 @@ body {
     filter: blur(60px);
     transition: background .8s ease;
 }
+
 .glow.one {
     top: -120px;
     left: -80px;
 }
+
 .glow.two {
     right: -120px;
     bottom: -100px;
     width: 380px;
     height: 380px;
 }
+
 .particle {
     position: absolute;
     width: 4px;
@@ -89,37 +114,48 @@ body {
     opacity: .22;
     animation: floating 5s ease-in-out infinite;
 }
+
 .particle:nth-child(3) {
     left: 12%;
     top: 35%;
     animation-delay: .5s;
 }
+
 .particle:nth-child(4) {
     left: 78%;
     top: 20%;
     animation-delay: 1.4s;
 }
+
 .particle:nth-child(5) {
     left: 88%;
     top: 65%;
     animation-delay: 2s;
 }
+
 .particle:nth-child(6) {
     left: 22%;
     top: 82%;
     animation-delay: 2.8s;
 }
+
 @keyframes floating {
+
     0%,100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-18px);
     }
+
 }
+
+
 /* =========================================================
    主容器
 ========================================================= */
+
 .page {
     width: 100%;
     min-height: 100vh;
@@ -127,13 +163,17 @@ body {
     justify-content: center;
     padding: 28px 18px 50px;
 }
+
 .container {
     width: 100%;
     max-width: 900px;
 }
+
+
 /* =========================================================
    Top Navigation
 ========================================================= */
+
 .topbar {
     width: 100%;
     display: flex;
@@ -141,11 +181,13 @@ body {
     align-items: center;
     margin-bottom: 50px;
 }
+
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 .logo-mark {
     width: 34px;
     height: 34px;
@@ -153,18 +195,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
     color: white;
+
     background:
         linear-gradient(
             135deg,
             var(--main),
             var(--main-dark)
         );
+
     box-shadow:
         0 7px 20px
         rgba(80,60,80,.15);
+
     transition: background .5s ease;
 }
+
 .logo-mark::after {
     content: "";
     width: 9px;
@@ -172,13 +219,21 @@ body {
     border-radius: 50%;
     background: rgba(255,255,255,.9);
 }
+
 .logo-text {
-    font-family: "Noto Serif TC", serif;
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     font-size: 13px;
     line-height: 1.2;
     letter-spacing: 1px;
     font-weight: 600;
 }
+
 .logo-text span {
     display: block;
     font-family: sans-serif;
@@ -186,6 +241,7 @@ body {
     letter-spacing: 2px;
     color: var(--muted);
 }
+
 .top-tag {
     padding: 7px 13px;
     border-radius: 999px;
@@ -196,13 +252,17 @@ body {
     background: var(--main-light);
     transition: background .5s ease;
 }
+
+
 /* =========================================================
    Hero
 ========================================================= */
+
 .hero {
     text-align: center;
     margin-bottom: 45px;
 }
+
 .hero-kicker {
     font-family: sans-serif;
     font-size: 10px;
@@ -211,39 +271,63 @@ body {
     color: var(--text);
     margin-bottom: 15px;
 }
+
 .hero h1 {
     margin: 0;
-    font-family: "Noto Serif TC", serif;
-    font-size: clamp(34px, 8vw, 62px);
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
+    font-size:
+        clamp(34px, 8vw, 62px);
+
     line-height: 1.25;
     letter-spacing: 1px;
     font-weight: 700;
 }
+
 .hero h1 .highlight {
     color: var(--text);
 }
+
 .hero-description {
     max-width: 520px;
     margin: 18px auto 0;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     color: var(--muted);
-    font-family: "Noto Serif TC", serif;
     font-size: 14px;
     line-height: 2;
     letter-spacing: .5px;
 }
+
+
 /* =========================================================
    Progress
 ========================================================= */
+
 .progress-wrapper {
     display: flex;
     justify-content: center;
     margin-bottom: 35px;
 }
+
 .progress {
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
 .progress-dot {
     width: 7px;
     height: 7px;
@@ -251,46 +335,61 @@ body {
     background: #ddd;
     transition: all .4s ease;
 }
+
 .progress-dot.active {
     width: 30px;
     background: var(--main);
     border-radius: 999px;
+
     transition:
         background .5s ease,
         width .4s ease;
 }
+
+
 /* =========================================================
    Screen
 ========================================================= */
+
 .screen {
     display: none;
+
     animation:
         screenIn .55s cubic-bezier(.2,.8,.2,1);
 }
+
 .screen.active {
     display: block;
 }
+
 @keyframes screenIn {
+
     from {
         opacity: 0;
         transform:
             translateY(20px)
             scale(.98);
     }
+
     to {
         opacity: 1;
         transform:
             translateY(0)
             scale(1);
     }
+
 }
+
+
 /* =========================================================
    問題標題
 ========================================================= */
+
 .question-area {
     text-align: center;
     margin-bottom: 30px;
 }
+
 .question-number {
     font-family: sans-serif;
     font-size: 9px;
@@ -299,1155 +398,2007 @@ body {
     font-weight: 800;
     margin-bottom: 10px;
 }
+
 .question {
     margin: 0;
-    font-family: "Noto Serif TC", serif;
-    font-size: clamp(25px, 5vw, 38px);
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
+    font-size:
+        clamp(25px, 5vw, 38px);
+
     font-weight: 700;
     letter-spacing: 1px;
-    color: var(--text);
+
+    color: var(--text) !important;
 }
+
 .question-description {
     margin-top: 10px;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     color: var(--muted);
-    font-family: "Noto Serif TC", serif;
     font-size: 13px;
 }
+
+
 /* =========================================================
    Choice Grid
 ========================================================= */
+
 .choices {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 17px;
 }
+
 .choices.four {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        repeat(2, 1fr);
 }
+
+
 /* =========================================================
    Choice Card
 ========================================================= */
+
 .choice {
     position: relative;
     overflow: hidden;
+
     min-height: 210px;
     padding: 28px 22px;
+
     border:
         1px solid
         rgba(255,255,255,.8);
+
     border-radius: 28px;
+
     background:
         linear-gradient(
             145deg,
             rgba(255,255,255,.94),
             rgba(255,255,255,.68)
         );
+
     box-shadow:
         0 12px 35px
         rgba(50,40,60,.07);
+
     cursor: pointer;
-    font-family: "Noto Serif TC", serif;
+
     text-align: center;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        "Songti TC",
+        serif !important;
+
+    /*
+       強制取消 iOS / Safari 原生按鈕文字顏色
+    */
+    appearance: none;
+    -webkit-appearance: none;
+
+    color: #303038 !important;
+    -webkit-text-fill-color: #303038 !important;
+
     transition:
         transform .25s ease,
         box-shadow .25s ease,
         border .25s ease;
-    /* 強制文字不要被按鈕預設樣式改色 */
-    color: var(--text) !important;
 }
+
+
 /*
-   徹底移除舊版兩點一線圖示。
-   即使舊 CSS 或 HTML 殘留，也不顯示。
+   完全不使用兩點一線／icon。
+   這裡也刻意沒有 .choice::before。
 */
-.choice-icon,
-.choice-icon::before,
-.choice-icon::after {
-    display: none !important;
-    visibility: hidden !important;
-    content: none !important;
-}
-.choice::before {
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    top: -60px;
-    right: -60px;
-    border-radius: 50%;
-    background: var(--main);
-    opacity: .07;
-    transition:
-        transform .35s ease,
-        opacity .35s ease;
-}
+
+
 .choice:hover {
     transform: translateY(-8px);
+
     box-shadow:
         0 20px 45px
         rgba(50,40,60,.13);
+
     border-color:
         rgba(255,255,255,1);
 }
-.choice:hover::before {
-    transform: scale(2.4);
-    opacity: .11;
-}
+
 .choice:active {
     transform: scale(.97);
 }
+
+
 /* =========================================================
    選項文字
 ========================================================= */
+
 .choice-title {
     position: relative;
-    font-family: "Noto Serif TC", serif !important;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        "Songti TC",
+        serif !important;
+
     font-size: 19px;
     font-weight: 700;
+
     margin-bottom: 7px;
+
     letter-spacing: 1px;
-    /* 永遠固定深灰，不跟著團體顏色變 */
+
+    /*
+       永遠深灰。
+       不跟著 μ's / Aqours / Liella! 的主題色改變。
+    */
     color: #303038 !important;
+    -webkit-text-fill-color: #303038 !important;
 }
+
 .choice-subtitle {
     position: relative;
-    font-family: "Noto Serif TC", serif !important;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     color: #888892 !important;
+
     font-size: 12px;
     letter-spacing: 1px;
 }
+
+
 /* =========================================================
    第二題
 ========================================================= */
+
 .second-note {
     margin: 0 auto 30px;
     max-width: 500px;
+
     text-align: center;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     color: var(--muted);
-    font-family: "Noto Serif TC", serif;
     font-size: 13px;
     line-height: 1.8;
 }
+
+
 /* =========================================================
    Result
 ========================================================= */
+
 .result-section {
     text-align: center;
 }
+
 .result-eyebrow {
     display: inline-flex;
     align-items: center;
+
     padding: 8px 14px;
     border-radius: 999px;
+
     background: var(--main-light);
+
     color: var(--text);
+
     font-family: sans-serif;
+
     font-size: 9px;
     font-weight: 800;
     letter-spacing: 2px;
 }
+
 .result-title {
     margin: 18px 0 8px;
-    font-family: "Noto Serif TC", serif;
-    font-size: clamp(28px, 6vw, 44px);
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
+    font-size:
+        clamp(28px, 6vw, 44px);
+
     font-weight: 700;
     letter-spacing: 1px;
+
     color: var(--text);
 }
+
 .result-subtitle {
     margin: 0 0 28px;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     color: var(--muted);
-    font-family: "Noto Serif TC", serif;
     font-size: 14px;
 }
+
+
 /* =========================================================
    Result Card
 ========================================================= */
+
 .result-card {
     position: relative;
+
     max-width: 760px;
     margin: 0 auto;
+
     padding: 28px;
+
     border:
         1px solid
         rgba(255,255,255,.9);
+
     border-radius: 34px;
+
     background:
         rgba(255,255,255,.78);
+
     backdrop-filter: blur(20px);
+
     box-shadow: var(--shadow);
+
     overflow: hidden;
 }
+
 .result-card::before {
     content: "";
+
     position: absolute;
+
     width: 350px;
     height: 350px;
+
     top: -190px;
     right: -150px;
+
     border-radius: 50%;
+
     background: var(--main);
     opacity: .06;
 }
+
+
 /* =========================================================
    Album
 ========================================================= */
+
 .album-wrapper {
     position: relative;
-    width: min(65vw, 360px);
+
+    width:
+        min(65vw, 360px);
+
     aspect-ratio: 1;
+
     margin: 5px auto 30px;
+
     border-radius: 24px;
+
     padding: 7px;
+
     background:
         linear-gradient(
             135deg,
             rgba(255,255,255,.95),
             var(--main-light)
         );
+
     box-shadow:
         0 25px 55px
         rgba(40,30,50,.16);
+
     transition:
         transform .4s ease,
         box-shadow .4s ease;
 }
+
 .album-wrapper:hover {
     transform:
         translateY(-6px)
         rotate(-1deg);
+
     box-shadow:
         0 30px 65px
         rgba(40,30,50,.20);
 }
+
 .album-wrapper::before {
     content: "";
+
     position: absolute;
+
     inset: -15px;
+
     border-radius: 35px;
+
     background: var(--main);
+
     opacity: .09;
+
     filter: blur(25px);
+
     z-index: -1;
 }
+
 .album-wrapper img {
     width: 100%;
     height: 100%;
+
     display: block;
+
     object-fit: cover;
+
     border-radius: 19px;
 }
+
+
 /* =========================================================
    Result Information
 ========================================================= */
+
 .result-category {
     color: var(--text);
+
     font-family: sans-serif;
+
     font-size: 10px;
     letter-spacing: 3px;
     font-weight: 800;
+
     margin-bottom: 9px;
 }
+
 .song-name {
     margin: 0 auto 10px;
+
     max-width: 650px;
-    font-family: "Noto Serif TC", serif;
-    font-size: clamp(26px, 6vw, 42px);
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
+    font-size:
+        clamp(26px, 6vw, 42px);
+
     font-weight: 700;
+
     line-height: 1.35;
+
     color: var(--text);
 }
+
 .group-name {
     display: inline-block;
+
     padding: 7px 15px;
+
     border-radius: 999px;
+
     color: var(--text) !important;
+
     background: var(--main-light);
-    font-family: "Noto Serif TC", serif;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     font-size: 13px;
     font-weight: 700;
 }
+
 .result-message {
     max-width: 500px;
+
     margin: 20px auto 28px;
+
     color: var(--muted);
-    font-family: "Noto Serif TC", serif;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     font-size: 13px;
     line-height: 1.9;
 }
+
+
 /* =========================================================
    Buttons
 ========================================================= */
+
 .buttons {
     display: flex;
     justify-content: center;
+
     gap: 11px;
+
     flex-wrap: wrap;
 }
+
 .btn {
     min-width: 150px;
+
     border: none;
+
     border-radius: 999px;
+
     padding: 14px 22px;
-    font-family: "Noto Serif TC", serif;
+
+    font-family:
+        "Noto Serif TC",
+        "Source Han Serif TC",
+        "PMingLiU",
+        "MingLiU",
+        serif !important;
+
     font-size: 13px;
     font-weight: 700;
+
     cursor: pointer;
+
     transition:
         transform .2s ease,
         box-shadow .2s ease,
         background .4s ease;
 }
+
 .btn:hover {
     transform: translateY(-3px);
 }
+
 .btn-primary {
     color: white;
+
     background:
         linear-gradient(
             135deg,
             var(--main),
             var(--main-dark)
         );
+
     box-shadow:
         0 10px 25px
         rgba(80,60,80,.15);
 }
+
 .btn-primary:hover {
     box-shadow:
         0 14px 30px
         rgba(80,60,80,.2);
 }
+
 .btn-secondary {
     color: #555;
+
     background:
         rgba(245,245,247,.95);
 }
+
 .btn-secondary:hover {
     background: #eeeeF2;
 }
+
+
 /* =========================================================
    Footer
 ========================================================= */
+
 .footer {
     margin-top: 45px;
+
     text-align: center;
+
     color: #aaa;
+
     font-family: sans-serif;
+
     font-size: 9px;
+
     line-height: 1.8;
+
     letter-spacing: .5px;
 }
+
+
 /* =========================================================
    Mobile
 ========================================================= */
+
 @media (max-width: 650px) {
+
     .page {
         padding:
             20px 14px
             40px;
     }
+
     .topbar {
         margin-bottom: 40px;
     }
+
     .top-tag {
         display: none;
     }
+
     .hero {
         margin-bottom: 35px;
     }
+
     .hero-description {
         font-size: 13px;
     }
+
     .choices,
     .choices.four {
         grid-template-columns: 1fr;
         gap: 12px;
     }
+
     .choice {
         min-height: 0;
+
         display: flex;
+
         align-items: center;
+
         text-align: left;
+
         padding: 18px;
+
         border-radius: 22px;
     }
+
     .choice-title {
         font-size: 17px;
     }
+
     .choice-subtitle {
         font-size: 11px;
     }
+
     .result-card {
         padding:
             20px 15px 25px;
+
         border-radius: 27px;
     }
+
     .album-wrapper {
         width:
             min(78vw, 320px);
+
         border-radius: 21px;
     }
+
     .buttons {
         flex-direction: column;
         align-items: stretch;
     }
+
     .btn {
         width: 100%;
     }
+
 }
+
 </style>
 </head>
+
+
 <body>
+
 <div class="background-decoration">
+
     <div class="glow one"></div>
     <div class="glow two"></div>
+
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
+
 </div>
+
+
 <div class="page">
+
 <div class="container">
+
+
 <!-- =========================================================
      TOP
 ========================================================= -->
+
 <div class="topbar">
+
     <div class="logo">
+
         <div class="logo-mark"></div>
+
         <div class="logo-text">
+
             LOVE LIVE!
-            <span>RANDOM SONG</span>
+
+            <span>
+                RANDOM SONG
+            </span>
+
         </div>
+
     </div>
+
     <div class="top-tag">
         FAN PROJECT
     </div>
+
 </div>
+
+
 <!-- =========================================================
      HERO
 ========================================================= -->
+
 <div class="hero">
+
     <div class="hero-kicker">
         LOVE LIVE! SONG SELECTOR
     </div>
+
     <h1>
+
         今天的你，<br>
+
         <span class="highlight">
             適合哪首歌？
         </span>
+
     </h1>
+
     <div class="hero-description">
+
         用兩個小問題，
         找到今天屬於你的 LoveLive! 歌曲。
+
         <br>
+
         不需要思考太久，
         憑直覺選就好了。
+
     </div>
+
 </div>
+
+
 <!-- =========================================================
      PROGRESS
 ========================================================= -->
+
 <div class="progress-wrapper">
+
     <div class="progress">
+
         <div
             class="progress-dot active"
             id="dot1">
         </div>
+
         <div
             class="progress-dot"
             id="dot2">
         </div>
+
         <div
             class="progress-dot"
             id="dot3">
         </div>
+
     </div>
+
 </div>
+
+
 <!-- =========================================================
      SCREEN 1
 ========================================================= -->
+
 <section
     class="screen active"
     id="screen1"
 >
-    <div class="question-area">
-        <div class="question-number">
-            QUESTION 01
-        </div>
-        <h2 class="question">
-            今天的心情比較像什麼？
-        </h2>
-        <div class="question-description">
-            選一個最接近現在的你。
-        </div>
+
+<div class="question-area">
+
+    <div class="question-number">
+        QUESTION 01
     </div>
-    <div class="choices">
-        <button
-            type="button"
-            class="choice"
-            onclick="selectMood('muse')"
-        >
-            <div>
-                <div class="choice-title">
-                    綻放的櫻花
-                </div>
-            </div>
-        </button>
-        <button
-            type="button"
-            class="choice"
-            onclick="selectMood('aqours')"
-        >
-            <div>
-                <div class="choice-title">
-                    洶湧的海浪
-                </div>
-            </div>
-        </button>
-        <button
-            type="button"
-            class="choice"
-            onclick="selectMood('liella')"
-        >
-            <div>
-                <div class="choice-title">
-                    平靜的星辰
-                </div>
-            </div>
-        </button>
+
+    <h2 class="question">
+        今天的心情比較像什麼？
+    </h2>
+
+    <div class="question-description">
+        選一個最接近現在的你。
     </div>
+
+</div>
+
+
+<div class="choices">
+
+
+    <button
+        type="button"
+        class="choice"
+        onclick="selectMood('muse')"
+    >
+
+        <div>
+
+            <div class="choice-title">
+                綻放的櫻花
+            </div>
+
+        </div>
+
+    </button>
+
+
+    <button
+        type="button"
+        class="choice"
+        onclick="selectMood('aqours')"
+    >
+
+        <div>
+
+            <div class="choice-title">
+                洶湧的海浪
+            </div>
+
+        </div>
+
+    </button>
+
+
+    <button
+        type="button"
+        class="choice"
+        onclick="selectMood('liella')"
+    >
+
+        <div>
+
+            <div class="choice-title">
+                平靜的星辰
+            </div>
+
+        </div>
+
+    </button>
+
+
+</div>
+
 </section>
+
+
 <!-- =========================================================
      SCREEN 2
 ========================================================= -->
+
 <section
     class="screen"
     id="screen2"
 >
-    <div class="question-area">
-        <div class="question-number">
-            QUESTION 02
-        </div>
-        <h2 class="question">
-            喜歡什麼樣的景色？
-        </h2>
-        <div
-            class="question-description"
-            id="groupDescription"
-        >
-            選擇一種屬於你的風景。
-        </div>
+
+<div class="question-area">
+
+    <div class="question-number">
+        QUESTION 02
     </div>
+
+    <h2 class="question">
+        喜歡什麼樣的景色？
+    </h2>
+
     <div
-        class="choices four"
-        id="groupChoices"
+        class="question-description"
+        id="groupDescription"
     >
+        選擇一種屬於你的風景。
     </div>
+
+</div>
+
+
+<div
+    class="choices four"
+    id="groupChoices"
+>
+</div>
+
 </section>
+
+
 <!-- =========================================================
      SCREEN 3
 ========================================================= -->
+
 <section
     class="screen result-section"
     id="screen3"
 >
-    <div class="result-eyebrow">
-        YOUR LOVE LIVE! SONG
+
+
+<div class="result-eyebrow">
+    YOUR LOVE LIVE! SONG
+</div>
+
+
+<h2 class="result-title">
+    今天的命定歌曲
+</h2>
+
+
+<p class="result-subtitle">
+    這首歌，現在正好適合你。
+</p>
+
+
+<div class="result-card">
+
+
+    <div class="album-wrapper">
+
+        <img
+            id="albumCover"
+            src=""
+            alt="歌曲封面"
+        >
+
     </div>
-    <h2 class="result-title">
-        今天的命定歌曲
-    </h2>
-    <p class="result-subtitle">
-        這首歌，現在正好適合你。
+
+
+    <div
+        class="result-category"
+        id="resultCategory"
+    >
+        RECOMMENDED FOR YOU
+    </div>
+
+
+    <h3
+        class="song-name"
+        id="songName"
+    >
+        歌曲名稱
+    </h3>
+
+
+    <div
+        class="group-name"
+        id="groupName"
+    >
+        團體名稱
+    </div>
+
+
+    <p class="result-message">
+
+        今天的你，也許正適合這首歌。<br>
+
+        不妨戴上耳機，
+        讓 LoveLive! 陪你走一段吧。
+
     </p>
-    <div class="result-card">
-        <div class="album-wrapper">
-            <img
-                id="albumCover"
-                src=""
-                alt="歌曲封面"
-            >
-        </div>
-        <div
-            class="result-category"
-            id="resultCategory"
+
+
+    <div class="buttons">
+
+        <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="restart()"
         >
-            RECOMMENDED FOR YOU
-        </div>
-        <h3
-            class="song-name"
-            id="songName"
+            重新開始
+        </button>
+
+
+        <button
+            type="button"
+            class="btn btn-primary"
+            onclick="listenSong()"
         >
-            歌曲名稱
-        </h3>
-        <div
-            class="group-name"
-            id="groupName"
-        >
-            團體名稱
-        </div>
-        <p class="result-message">
-            今天的你，也許正適合這首歌。<br>
-            不妨戴上耳機，
-            讓 LoveLive! 陪你走一段吧。
-        </p>
-        <div class="buttons">
-            <button
-                type="button"
-                class="btn btn-secondary"
-                onclick="restart()"
-            >
-                重新開始
-            </button>
-            <button
-                type="button"
-                class="btn btn-primary"
-                onclick="listenSong()"
-            >
-                跳轉聽歌
-            </button>
-        </div>
+            跳轉聽歌
+        </button>
+
     </div>
+
+
+</div>
+
 </section>
+
+
 <!-- =========================================================
      FOOTER
 ========================================================= -->
+
 <div class="footer">
+
     LoveLive! Song Selector
+
     <br>
+
     非官方粉絲企劃網站・Fan Project
+
+</div>
+
+
 </div>
 </div>
-</div>
+
+
 <script>
+
+
 /* =========================================================
    主題
 ========================================================= */
+
 const themes = {
+
     muse: {
+
         main: "#e88aa7",
         light: "#fff0f5",
         dark: "#d66c8f"
+
     },
+
     aqours: {
+
         main: "#56a9df",
         light: "#edf8ff",
         dark: "#378dc7"
+
     },
+
     liella: {
+
         main: "#a684d8",
         light: "#f4efff",
         dark: "#8966c4"
+
     }
+
 };
+
+
 /* =========================================================
    歌曲資料
 ========================================================= */
+
 const songData = {
+
+
     muse: {
+
+
         lilywhite: {
+
             title: "含苞初放",
+
             songs: [
+
                 {
+
                     name: "微熱からMystery",
+
                     group: "lily white",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=lily+white",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+微熱からMystery"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+微熱からMystery"
+
                 },
+
                 {
+
                     name: "知らないLove*教えてLove",
+
                     group: "lily white",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=lily+white",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+知らないLove+教えてLove"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+知らないLove+教えてLove"
+
                 },
+
                 {
+
                     name: "秋のあなたの空遠く",
+
                     group: "lily white",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=lily+white",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+秋のあなたの空遠く"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=lily+white",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+秋のあなたの空遠く"
+
                 }
+
             ]
+
         },
+
+
         bibi: {
+
             title: "熱情滿開",
+
             songs: [
+
                 {
+
                     name: "Cutie Panther",
+
                     group: "BiBi",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=BiBi",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+Cutie+Panther"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=BiBi",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+Cutie+Panther"
+
                 },
+
                 {
+
                     name: "PSYCHIC FIRE",
+
                     group: "BiBi",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=BiBi",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+PSYCHIC+FIRE"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=BiBi",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+PSYCHIC+FIRE"
+
                 }
+
             ]
+
         },
+
+
         printemp: {
+
             title: "浪漫吹雪",
+
             songs: [
+
                 {
+
                     name: "Love marginal",
+
                     group: "Printemps",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=Printemps",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+Love+marginal"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=Printemps",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+Love+marginal"
+
                 },
+
                 {
+
                     name: "sweet&sweet holiday",
+
                     group: "Printemps",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=Printemps",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+sweet+sweet+holiday"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=Printemps",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+sweet+sweet+holiday"
+
                 }
+
             ]
+
         },
+
+
         muse_all: {
+
             title: "賞櫻百景",
+
             songs: [
+
                 {
+
                     name: "Snow halation",
+
                     group: "μ's",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=μ's",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+Snow+halation"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=μ's",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+Snow+halation"
+
                 },
+
                 {
+
                     name: "僕らは今のなかで",
+
                     group: "μ's",
-                    cover: "https://placehold.co/800x800/f7dce5/333?text=μ's",
-                    url: "https://www.youtube.com/results?search_query=LoveLive+僕らは今のなかで"
+
+                    cover:
+                        "https://placehold.co/800x800/f7dce5/333?text=μ's",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=LoveLive+僕らは今のなかで"
+
                 }
+
             ]
+
         }
+
     },
+
+
     aqours: {
+
+
         cyaron: {
+
             title: "歡快碎浪",
+
             songs: [
+
                 {
+
                     name: "元気全開DAY! DAY! DAY!",
+
                     group: "CYaRon!",
-                    cover: "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
-                    url: "https://www.youtube.com/results?search_query=Aqours+元気全開DAY+DAY+DAY"
+
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+元気全開DAY+DAY+DAY"
+
                 },
+
                 {
+
                     name: "近未来ハッピーエンド",
+
                     group: "CYaRon!",
-                    cover: "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
-                    url: "https://www.youtube.com/results?search_query=Aqours+近未来ハッピーエンド"
+
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=CYaRon!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+近未来ハッピーエンド"
+
                 }
+
             ]
+
         },
+
+
         azalea: {
+
             title: "溫柔浪擁",
+
             songs: [
+
                 {
+
                     name: "トリコリコPLEASE!!",
+
                     group: "AZALEA",
-                    cover: "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
-                    url: "https://www.youtube.com/results?search_query=Aqours+トリコリコPLEASE"
+
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+トリコリコPLEASE"
+
                 },
+
                 {
+
                     name: "GALAXY HidE and SeeK",
+
                     group: "AZALEA",
-                    cover: "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
-                    url: "https://www.youtube.com/results?search_query=Aqours+GALAXY+HidE+and+SeeK"
+
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=AZALEA",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+GALAXY+HidE+and+SeeK"
+
                 }
+
             ]
+
         },
+
+
         guilty: {
+
             title: "神秘夜浪",
+
             songs: [
+
                 {
+
                     name: "Strawberry Trapper",
+
                     group: "Guilty Kiss",
-                    cover: "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
-                    url: "https://www.youtube.com/results?search_query=Aqours+Strawberry+Trapper"
+
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+Strawberry+Trapper"
+
                 },
+
                 {
+
                     name: "Guilty Eyes Fever",
+
                     group: "Guilty Kiss",
-                    cover: "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
-                    url: "https://www.youtube.com/results?search_query=Aqours+Guilty+Eyes+Fever"
+
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=Guilty+Kiss",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+Guilty+Eyes+Fever"
+
                 }
+
             ]
+
         },
+
+
         aqours_all: {
+
             title: "海納百川",
+
             songs: [
+
                 {
+
                     name: "君のこころは輝いてるかい？",
+
                     group: "Aqours",
-                    cover: "https://placehold.co/800x800/dff2ff/333?text=Aqours",
-                    url: "https://www.youtube.com/results?search_query=Aqours+君のこころは輝いてるかい"
+
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=Aqours",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+君のこころは輝いてるかい"
+
                 },
+
                 {
+
                     name: "青空Jumping Heart",
+
                     group: "Aqours",
-                    cover: "https://placehold.co/800x800/dff2ff/333?text=Aqours",
-                    url: "https://www.youtube.com/results?search_query=Aqours+青空Jumping+Heart"
+
+                    cover:
+                        "https://placehold.co/800x800/dff2ff/333?text=Aqours",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Aqours+青空Jumping+Heart"
+
                 }
+
             ]
+
         }
+
     },
+
+
     liella: {
+
+
         sync: {
+
             title: "星光躍動",
+
             songs: [
+
                 {
+
                     name: "オルタネイト",
+
                     group: "5yncri5e!",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
-                    url: "https://www.youtube.com/results?search_query=Liella+5yncri5e"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+5yncri5e"
+
                 },
+
                 {
+
                     name: "Thank you Good morning",
+
                     group: "5yncri5e!",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
-                    url: "https://www.youtube.com/results?search_query=Liella+5yncri5e"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=5yncri5e!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+5yncri5e"
+
                 }
+
             ]
+
         },
+
+
         catchu: {
+
             title: "神秘星閃",
+
             songs: [
+
                 {
+
                     name: "What a Wonderful Dream!!",
+
                     group: "CatChu!",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
-                    url: "https://www.youtube.com/results?search_query=Liella+CatChu"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+CatChu"
+
                 },
+
                 {
+
                     name: "オルタネイト",
+
                     group: "CatChu!",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
-                    url: "https://www.youtube.com/results?search_query=Liella+CatChu"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=CatChu!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+CatChu"
+
                 }
+
             ]
+
         },
+
+
         kaleido: {
+
             title: "星語如歌",
+
             songs: [
+
                 {
+
                     name: "不可視なブルー",
+
                     group: "KALEIDOSCORE",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
-                    url: "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
+
                 },
+
                 {
+
                     name: "ニュートラル",
+
                     group: "KALEIDOSCORE",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
-                    url: "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=KALEIDOSCORE",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+KALEIDOSCORE"
+
                 }
+
             ]
+
         },
+
+
         liella_all: {
+
             title: "群星集結",
+
             songs: [
+
                 {
+
                     name: "始まりは君の空",
+
                     group: "Liella!",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=Liella!",
-                    url: "https://www.youtube.com/results?search_query=Liella+始まりは君の空"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+始まりは君の空"
+
                 },
+
                 {
+
                     name: "未来予報ハレルヤ！",
+
                     group: "Liella!",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=Liella!",
-                    url: "https://www.youtube.com/results?search_query=Liella+未来予報ハレルヤ"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+未来予報ハレルヤ"
+
                 },
+
                 {
+
                     name: "ノンフィクション!!",
+
                     group: "Liella!",
-                    cover: "https://placehold.co/800x800/eee5ff/333?text=Liella!",
-                    url: "https://www.youtube.com/results?search_query=Liella+ノンフィクション"
+
+                    cover:
+                        "https://placehold.co/800x800/eee5ff/333?text=Liella!",
+
+                    url:
+                        "https://www.youtube.com/results?search_query=Liella+ノンフィクション"
+
                 }
+
             ]
+
         }
+
     }
+
 };
+
+
 /* =========================================================
    第二題選項
 ========================================================= */
+
 const groupOptions = {
+
+
     muse: [
+
         {
             key: "lilywhite",
             title: "含苞初放"
         },
+
         {
             key: "bibi",
             title: "熱情滿開"
         },
+
         {
             key: "printemp",
             title: "浪漫吹雪"
         },
+
         {
             key: "muse_all",
             title: "賞櫻百景"
         }
+
     ],
+
+
     aqours: [
+
         {
             key: "cyaron",
             title: "歡快碎浪"
         },
+
         {
             key: "azalea",
             title: "溫柔浪擁"
         },
+
         {
             key: "guilty",
             title: "神秘夜浪"
         },
+
         {
             key: "aqours_all",
             title: "海納百川"
         }
+
     ],
+
+
     liella: [
+
         {
             key: "sync",
             title: "星光躍動"
         },
+
         {
             key: "catchu",
             title: "神秘星閃"
         },
+
         {
             key: "kaleido",
             title: "星語如歌"
         },
+
         {
             key: "liella_all",
             title: "群星集結"
         }
+
     ]
+
 };
+
+
 /* =========================================================
    狀態
 ========================================================= */
+
 let selectedMood = null;
 let selectedGroup = null;
 let currentSong = null;
+
+
 /* =========================================================
    切換主題
 ========================================================= */
+
 function setTheme(mood) {
+
     const theme = themes[mood];
+
     document.documentElement
         .style
         .setProperty(
             "--main",
             theme.main
         );
+
     document.documentElement
         .style
         .setProperty(
             "--main-light",
             theme.light
         );
+
     document.documentElement
         .style
         .setProperty(
             "--main-dark",
             theme.dark
         );
+
 }
+
+
 /* =========================================================
    選擇心情
 ========================================================= */
+
 function selectMood(mood) {
+
     selectedMood = mood;
+
     setTheme(mood);
+
     renderGroupChoices(mood);
+
     showScreen(2);
+
 }
+
+
 /* =========================================================
    產生第二題
 ========================================================= */
+
 function renderGroupChoices(mood) {
+
     const container =
         document.getElementById(
             "groupChoices"
         );
+
     const description =
         document.getElementById(
             "groupDescription"
         );
+
     container.innerHTML = "";
+
+
     if (mood === "muse") {
+
         description.textContent =
             "如果今天是一片櫻花，你想看見哪一種風景？";
-    } else if (mood === "aqours") {
+
+    }
+
+    else if (mood === "aqours") {
+
         description.textContent =
             "如果今天是一片海，你想遇見哪一種浪？";
-    } else {
+
+    }
+
+    else {
+
         description.textContent =
             "如果今天抬頭看見星空，你想看見哪一片星光？";
+
     }
+
+
     groupOptions[mood].forEach(
+
         option => {
+
             const button =
                 document.createElement(
                     "button"
                 );
+
             button.type = "button";
+
             button.className =
                 "choice";
+
+
             /*
-               這裡刻意不加入任何 icon。
-               第二題只顯示文字。
+               不加入任何 icon。
             */
+
             button.innerHTML = `
+
                 <div>
+
                     <div class="choice-title">
+
                         ${option.title}
+
                     </div>
+
                 </div>
+
             `;
+
+
             button.onclick =
                 function() {
+
                     selectGroup(
                         option.key
                     );
+
                 };
+
+
             container.appendChild(
                 button
             );
+
         }
+
     );
+
 }
+
+
 /* =========================================================
    選擇分類
 ========================================================= */
+
 function selectGroup(group) {
+
     selectedGroup = group;
+
     showResult();
+
 }
+
+
 /* =========================================================
    隨機歌曲
 ========================================================= */
+
 function randomSong(songs) {
+
     const index =
         Math.floor(
             Math.random() *
             songs.length
         );
+
     return songs[index];
+
 }
+
+
 /* =========================================================
    顯示結果
 ========================================================= */
+
 function showResult() {
+
     const category =
-        songData[selectedMood][selectedGroup];
+        songData
+        [selectedMood]
+        [selectedGroup];
+
+
     if (
         !category ||
         !category.songs ||
         category.songs.length === 0
     ) {
+
         alert(
             "這個分類目前還沒有歌曲資料。"
         );
+
         return;
+
     }
+
+
     currentSong =
         randomSong(
             category.songs
         );
+
+
     document
         .getElementById("songName")
         .textContent =
         currentSong.name;
+
+
     document
         .getElementById("groupName")
         .textContent =
         currentSong.group;
+
+
     document
         .getElementById("albumCover")
         .src =
         currentSong.cover;
+
+
     document
         .getElementById("albumCover")
         .alt =
         currentSong.name;
+
+
     document
         .getElementById("resultCategory")
         .textContent =
         category.title;
+
+
     showScreen(3);
+
 }
+
+
 /* =========================================================
    重新開始
 ========================================================= */
+
 function restart() {
+
     selectedMood = null;
+
     selectedGroup = null;
+
     currentSong = null;
+
     setTheme("muse");
+
     showScreen(1);
+
 }
+
+
 /* =========================================================
    跳轉聽歌
 ========================================================= */
+
 function listenSong() {
+
     if (
         !currentSong ||
         !currentSong.url
     ) {
+
         return;
+
     }
+
+
     window.open(
         currentSong.url,
         "_blank"
     );
+
 }
+
+
 /* =========================================================
    Screen 切換
 ========================================================= */
+
 function showScreen(number) {
+
     document
         .querySelectorAll(".screen")
         .forEach(
+
             screen => {
+
                 screen.classList
                     .remove("active");
+
             }
+
         );
+
+
     document
         .getElementById(
             "screen" + number
         )
         .classList
         .add("active");
+
+
     document
         .querySelectorAll(".progress-dot")
         .forEach(
+
             dot => {
+
                 dot.classList
                     .remove("active");
+
             }
+
         );
+
+
     for (
         let i = 1;
         i <= number;
         i++
     ) {
+
         document
             .getElementById(
                 "dot" + i
             )
             .classList
             .add("active");
+
     }
+
+
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
+
 }
+
 </script>
+
 </body>
 </html>
