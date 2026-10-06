@@ -2187,16 +2187,37 @@ function showResult() {
         currentSong.group;
 
 
-    document
-        .getElementById("albumCover")
-        .src =
-        currentSong.cover;
+    const albumCover =
+    document.getElementById("albumCover");
 
+let imageTry = 0;
 
-    document
-        .getElementById("albumCover")
-        .alt =
-        currentSong.name;
+function tryAlbumImage() {
+
+    const spaces =
+        " ".repeat(imageTry);
+
+    albumCover.src =
+        spaces + currentSong.cover;
+
+}
+
+albumCover.onerror = function() {
+
+    imageTry++;
+
+    if (imageTry <= 4) {
+
+        tryAlbumImage();
+
+    }
+
+};
+
+tryAlbumImage();
+
+albumCover.alt =
+    currentSong.name;
 
 
     document
