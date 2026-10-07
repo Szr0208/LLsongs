@@ -2187,50 +2187,16 @@ function showResult() {
         currentSong.group;
 
 
-    /* =====================================================
-       顯示歌曲封面
-       自動嘗試 0～4 個檔名前導空格
-    ===================================================== */
-
     const albumCover =
-        document.getElementById("albumCover");
+    document.getElementById("albumCover");
 
-    let imageTry = 0;
+albumCover.onerror = null;
 
+albumCover.src =
+    currentSong.cover;
 
-    function tryAlbumImage() {
-
-        const spaces =
-            "%20".repeat(imageTry);
-
-
-        albumCover.src =
-            spaces + currentSong.cover;
-
-    }
-
-
-    albumCover.onerror =
-        function() {
-
-            imageTry++;
-
-
-            if (imageTry <= 4) {
-
-                tryAlbumImage();
-
-            }
-
-        };
-
-
-    tryAlbumImage();
-
-
-    albumCover.alt =
-        currentSong.name;
-
+albumCover.alt =
+    currentSong.name;
 
     document
         .getElementById("resultCategory")
